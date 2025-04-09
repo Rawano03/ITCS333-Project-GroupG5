@@ -18,3 +18,12 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #f1c2e9;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
