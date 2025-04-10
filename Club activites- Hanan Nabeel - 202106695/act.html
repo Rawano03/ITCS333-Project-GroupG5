@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="st.css" />
     <title>Club Activities</title>
     <header class="container">
         <h1>Welcome to Campus Club Activities</h1>
@@ -13,8 +14,7 @@
         </nav>
     
    
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
-    <link rel="stylesheet" href="st.css" />
+    
   </head>
   <body>
     
@@ -27,20 +27,27 @@
           <option value="workshops">Workshop</option>
           <option value="hackathons">Hackathon</option>
         </select>
+        <div class="sorting">
+            <select id="sortBy">
+                <option value="name">Sort by Name</option>
+                <option value="category">Sort by Category</option>
+            </select>
+        </div>
         <button id="searchBtn">Search</button>
       </section>
+
     </header>
   
     <main class="container">
       <section>
         <h2>Featured Club Activities</h2>
         <div class="activity-item">
-          <h3><a href="Cyclub.html">Cybersecurity Club Workshop</a></h3>
+          <h3><a href="activity.html">Cybersecurity Club Workshop</a></h3>
           <p>Learn the basics of cybersecurity. Join us for an exciting workshop!</p>
         </div>
         <div class="activity-item">
-          <h3><a href="activity-detail.html">Introduction to Cryptography</a></h3>
-          <p>Join the Literature Club for a peaceful and engaging reading session.</p>
+          <h3><a href="activity.html">Introduction to Cryptography</a></h3>
+          <p> Discover the basics of cryptography and its importance in data security!</p>
         </div>
     
       </section>
