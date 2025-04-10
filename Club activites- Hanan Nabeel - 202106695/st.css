@@ -1,26 +1,163 @@
-.activity-item {
+
+  .container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem 1rem 0 1rem;
+  }
+
+  header.container h1 {
+    text-align: center;
+  }
+  .activity-item {
     margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255); /* خلفية شفافة */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف حول الإطار */
   }
-  
-  .activity-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+
+  .activity-item h3, .activity-item p {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6); /* خلفية شفافة للنص */
+    border-radius: 5px;
+    margin: 0;
   }
-  
-  .activity-item img {
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
   .activity-item a {
     color: #007bff;
     text-decoration: none;
   }
-  
-  .activity-item a:hover {
-    text-decoration: underline;
+  .activity-item img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
   }
+  
+  .nav-button {
+    min-width: 140px;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  nav {
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav li {
+    display: flex;
+    justify-content: center;
+  }
+  
+  footer.container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  
+  
+  /* ========== MOBILE: ≤599px ========== */
+  @media (max-width: 599px) {
+
+  
+    .container {
+      padding: 0.5rem;
+    }
+  
+    h1 {
+      font-size: 18px;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+  
+    h2 {
+      font-size: 16px;
+      text-align: center;
+    }
+  
+    h3 {
+      font-size: 15px;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .nav-button {
+      width: 100%;
+      max-width: 240px;
+    }
+  }
+  
+  /* ========== TABLET: 600px–1023px ========== */
+  @media (min-width: 600px) and (max-width: 1023px) {
+   
+  
+    .container {
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 22px;
+      margin-bottom: 0.8rem;
+    }
+  
+    h2 {
+      font-size: 18px;
+    }
+  
+    h3 {
+      font-size: 16px;
+    }
+  
+
+    .nav-button {
+      width: auto;
+    }
+  }
+  
+  /* ========== LAPTOP: ≥1024px ========== */
+  @media (min-width: 1024px) {
+    
+  
+    .container {
+      padding: 1.5rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    h1 {
+      font-size: 36px;
+      margin-bottom: 2rem;
+    }
+  
+    h2 {
+      font-size: 22px;
+    }
+  
+    h3 {
+      font-size: 18px;
+    }
+  
+   
+    .activity-item img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  

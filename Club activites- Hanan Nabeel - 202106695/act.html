@@ -1,42 +1,45 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campus Hub - Club Activities</title>
+    <title>Club Activities</title>
+    <header class="container">
+        <h1>Welcome to Campus Club Activities</h1>
+        <nav>
+          <ul>
+            <li><a href="activity.html" role="button" class="nav-button">All Activities</a></li>
+          </ul>
+        </nav>
+    
+   
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-
+    <link rel="stylesheet" href="st.css" />
   </head>
   <body>
-    <header class="container">
-      <h1>Welcome to Campus Club Activities</h1>
-      <nav>
-        <ul>
-          <li><a href="Main_Listing.html" role="button" class="nav-button">Dashboard</a></li>
-          <li><a href="create-activity.html" role="button" class="secondary nav-button">Create Activity</a></li>
-          <li><a href="activity.html" role="button" class="nav-button">All Activities</a></li>
-        </ul>
-      </nav>
+    
+      
+      <section class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search Activities..." />
+        <select id="filterSelect">
+            <option value="all">All Categories</option>
+          <option value="activities">Activities</option>
+          <option value="workshops">Workshop</option>
+          <option value="hackathons">Hackathon</option>
+        </select>
+        <button id="searchBtn">Search</button>
+      </section>
     </header>
   
     <main class="container">
       <section>
         <h2>Featured Club Activities</h2>
         <div class="activity-item">
-            <a href="Cyclub.html">Cybersecurity Club Workshop</a>
-          <h3><a href="activity-detail.html">Cybersecurity Club Workshop</a></h3>
-          <img src="assets/images/cybersecurity-workshop.jpg" alt="Cybersecurity Workshop" style="max-width: 100%; border-radius: 8px;" />
-          <p>Learn the basics of ethical hacking and cybersecurity. Join us for an exciting workshop!</p>
+          <h3><a href="Cyclub.html">Cybersecurity Club Workshop</a></h3>
+          <p>Learn the basics of cybersecurity. Join us for an exciting workshop!</p>
         </div>
         <div class="activity-item">
-          <h3><a href="activity-detail.html">AI Club Hackathon</a></h3>
-          <img src="assets/images/ai-hackathon.jpg" alt="AI Hackathon" style="max-width: 100%; border-radius: 8px;" />
-          <p>Participate in our first AI Hackathon to build innovative AI-based solutions!</p>
-        </div>
-        <div class="activity-item">
-          <h3><a href="activity-detail.html">Literature Club Reading Session</a></h3>
-          <img src="assets/images/literature-reading.jpg" alt="Literature Reading" style="max-width: 100%; border-radius: 8px;" />
+          <h3><a href="activity-detail.html">Introduction to Cryptography</a></h3>
           <p>Join the Literature Club for a peaceful and engaging reading session.</p>
         </div>
-        <!-- Add more activities as needed -->
+        
       </section>
     </main>
   
