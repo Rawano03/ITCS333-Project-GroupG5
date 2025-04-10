@@ -10,15 +10,15 @@
   }
   .activity-item {
     margin-bottom: 20px;
-    background-color: rgb(255, 255, 255); /* خلفية شفافة */
+    background-color: rgb(255, 255, 255); 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف حول الإطار */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
 
   .activity-item h3, .activity-item p {
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.6); /* خلفية شفافة للنص */
+    background-color: rgba(255, 255, 255, 0.6); 
     border-radius: 5px;
     margin: 0;
   }
@@ -166,11 +166,20 @@
       }
       
       .pagination button {
-        padding: 0.5rem 1rem;
-        margin: 0.5rem;
         border-radius: 5px;
-        background-color: #007bff;
+        color: #007bff;
         color: white;
+    
       }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    label {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
   }
   
