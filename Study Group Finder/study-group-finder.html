@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Hub - Study Groups</title>
+  <title>Campus Hub - Study Group Finder</title>
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="container">
-    <h1>Study Groups</h1>
+    <h1>Study Group Finder</h1>
     <nav>
       <ul>
         <li><a href="../index.html" role="button" class="nav-button">Home Page</a></li>
@@ -30,6 +30,7 @@
             aria-label="Search study groups"
           />
           <div class="dropdown-pair">
+            <label for="subject">Subject</label>
             <select name="subject" aria-label="Filter by subject">
               <option value="">All Subjects</option>
               <option value="math">Mathematics</option>
@@ -38,6 +39,7 @@
               <option value="engineering">Engineering</option>
               <option value="business">Business</option>
             </select>
+            <label for="sort">Sort By</label>
             <select name="sort" aria-label="Sorting">
               <option value="newest">Sort: Newest</option>
               <option value="oldest">Sort: Oldest</option>
