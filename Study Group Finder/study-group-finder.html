@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Hub - Study Groups</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Study Groups</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html" role="button" class="nav-button">Home Page</a></li>
+        <li><a href="create-group.html" role="button" class="nav-button">Create Group</a></li>
+        <li><a href="group-detail.html" role="button" class="nav-button">Group Details</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main class="container">
+    <section aria-label="Search and Filters">
+      <form>
+        <div class="grid">
+          <input 
+            type="search" 
+            name="search" 
+            placeholder="Search study groups..." 
+            class="search-wide" 
+            aria-label="Search study groups"
+          />
+          <div class="dropdown-pair">
+            <select name="subject" aria-label="Filter by subject">
+              <option value="">All Subjects</option>
+              <option value="math">Mathematics</option>
+              <option value="science">Science</option>
+              <option value="cs">Computer Science</option>
+              <option value="engineering">Engineering</option>
+              <option value="business">Business</option>
+            </select>
+            <select name="sort" aria-label="Sorting">
+              <option value="newest">Sort: Newest</option>
+              <option value="oldest">Sort: Oldest</option>
+              <option value="most">Sort: Most Members</option>
+              <option value="fewest">Sort: Fewest Members</option>
+            </select>
+          </div>  
+        </div>
+      </form>
+    </section>
+
+    <hr />
+
+    <section aria-label="Study Groups List">
+      <div class="grid">
+        <article>
+          <header>
+            <h2><a href="group-detail.html#calc-group">Calculus Study Group</a></h2>
+            <small>
+              Created on 
+              <time datetime="2025-03-15" class="custom-time">Mar 15, 2025</time>
+              • Subject: Mathematics • 12 members
+            </small>
+          </header>
+          <p>Weekly study sessions for Calculus II students. We meet every Tuesday and Thursday in the Math Building, Room 204.</p>
+          <footer>
+            <a href="group-detail.html#calc-group" role="button" class="secondary">View Details</a>
+            <button class="join-button">Join Group</button>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h2><a href="group-detail.html#cs-group">CS Senior Project Collaboration</a></h2>
+            <small>
+              Created on 
+              <time datetime="2025-03-20" class="custom-time">Mar 20, 2025</time>
+              • Subject: Computer Science • 8 members
+            </small>
+          </header>
+          <p>Group for Computer Science seniors working on capstone projects. Share ideas, get feedback, and collaborate.</p>
+          <footer>
+            <a href="group-detail.html#cs-group" role="button" class="secondary">View Details</a>
+            <button class="join-button">Join Group</button>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h2><a href="group-detail.html#bio-group">Biology Study Partners</a></h2>
+            <small>
+              Created on 
+              <time datetime="2025-03-10" class="custom-time">Mar 10, 2025</time>
+              • Subject: Science • 15 members
+            </small>
+          </header>
+          <p>Preparing for midterms together. All biology students welcome! We meet in the Science Library study rooms.</p>
+          <footer>
+            <a href="group-detail.html#bio-group" role="button" class="secondary">View Details</a>
+            <button class="join-button">Join Group</button>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h2><a href="group-detail.html#entrepreneur-group">Entrepreneurship Club Study</a></h2>
+            <small>
+              Created on 
+              <time datetime="2025-03-25" class="custom-time">Mar 25, 2025</time>
+              • Subject: Business • 5 members
+            </small>
+          </header>
+          <p>For students taking Entrepreneurship courses. Case study discussions and business plan workshops.</p>
+          <footer>
+            <a href="group-detail.html#entrepreneur-group" role="button" class="secondary">View Details</a>
+            <button class="join-button">Join Group</button>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <nav aria-label="Pagination">
+      <ul class="pagination">
+        <li><a href="#" class="secondary">Previous</a></li>
+        <li><strong>1</strong></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#" class="secondary">Next</a></li>
+      </ul>
+    </nav>
+
+    <div class="create-button-container">
+      <a href="create-group.html" role="button" class="create-button">Create New Study Group</a>
+    </div>
+  </main>
+
+  <footer class="container">
+    <small>&copy; 2025 Campus Hub. All rights reserved.</small>
+  </footer>
+</body>
+</html>
