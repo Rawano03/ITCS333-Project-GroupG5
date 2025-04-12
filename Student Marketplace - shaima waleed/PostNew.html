@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post New Item</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
+</head>
+<body>
+  <header>
+    <h1>Post New Item</h1>
+    <nav>
+      <ul>
+        <li><a href="marketplace.html">Marketplace</a></li>
+    
+      </ul>
+    </nav>
+  </header>
+
+  <section class="marketplace">
+    <form action="#" method="post" style="width: 300px; margin: auto;">
+      <label>Item Name:</label><br>
+      <input type="text" name="itemname" required><br><br>
+
+      <label>Description:</label><br>
+      <textarea name="description" rows="4" required></textarea><br><br>
+
+      <label>Price (BD):</label><br>
+      <input type="number" name="price" step="1" required><br><br>
+
+      <label>Image URL:</label><br>
+      <input type="url" name="image"><br><br>
+
+      <input type="submit" value="Post Item">
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Campus Hub | Student Marketplace</p>
+  </footer>
+</body>
+</html>
