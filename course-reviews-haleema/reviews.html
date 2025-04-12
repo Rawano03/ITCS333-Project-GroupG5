@@ -11,8 +11,47 @@
     <header class="container"> 
         <h1> welcome to course review </h1>
     <input type="button" value="add course review">
+ <form action="/submit-feedback" method="post">
+      <label for="rating">How was your course?</label>
+      <fieldset>
+        <label>
+          <input type="radio" name="rating" value="5 stars" required />
+          Five Stars
+        </label>
+        <label>
+          <input type="radio" name="rating" value="4 stars" />
+          Four Stars
+        </label>
+        <label>
+          <input type="radio" name="rating" value="3 stars" />
+          Three Stars
+        </label>
+        <label>
+          <input type="radio" name="rating" value="2 stars" />
+          Two Stars
+        </label>
+        <label>
+          <input type="radio" name="rating" value="1 star" />
+          One Star
+        </label>
+      </fieldset>
 
-    </header>
+      <h2>Dear student, you can write your feedback below</h2>
+
+      <label for="feedback">Your Feedback:</label>
+      <textarea
+        id="feedback"
+        name="feedback"
+        rows="6"
+        placeholder="Write your feedback here..."
+        required
+      ></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </header>
+    
+
 
     <footer class="container">
         <hr />
