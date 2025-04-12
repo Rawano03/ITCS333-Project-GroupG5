@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marketplace</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+      <header class="container">
+        <h1>Student Marketplace</h1>
+        <nav>
+          <ul>
+            <li><a href="../index.html" role="button" class="nav-button">Home Page</a></li>
+            <li><a href="PostNew.html" role="button" class="nav-button">Post New Item</a></li>
+          </ul>
+        </nav>
+      </header>
+
+
+      <main class="container">
+        <section aria-label="Search and Filters">
+          <form>
+            <div class="grid">
+              <input type="search" name="search" placeholder="Search items..." class="search-wide" />
+              <div class="dropdown-pair">
+                <select name="category">
+                  <option value="">All Categories</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="books">Furniture</option>
+                  <option value="fashion">Books</option>
+                  <option value="furniture">Art</option>
+                  <option value="other">Others</option>
+                </select>
+                <select name="sort">
+                  <option value="latest">Sort: Latest</option>
+                  <option value="price_low_high">Price: Low to High</option>
+                  <option value="price_high_low">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
+
+
+      <section aria-label="Marketplace List">
+        <div class="grid">
+          <!-- Item 1 -->
+          <article>
+            <img src="img/headphones.jpg" alt="Wireless Headphones" style="max-width: 100%; border-radius: 8px;">
+            <hr>
+            <header>
+              <h2><a href="DetailsPost.html#headphones">Wireless Headphones</a></h2>
+              <small>
+                Posted by Ali • 
+                <time datetime="2025-04-12" class="custom-time">Apr 12, 2025</time>
+                • Condition: Like New
+              </small>
+            </header>
+            <p>Price: 10 BHD</p>
+            <p>Experience high-quality sound with these like-new wireless headphones.</p>
+            <footer>
+              <a href="DetailsPost.html#headphones">View Item</a>
+            </footer>
+          </article>
+      
+          <!-- Item 2 -->
+          <article>
+            <img src="img/study-desk.jpg" alt="Study Desk" style="max-width: 100%; border-radius: 8px;">
+            <hr>
+            <header>
+              <h2><a href="DetailsPost.html#study-desk">Study Desk</a></h2>
+              <small>
+                Posted by Sara • 
+                <time datetime="2025-04-10" class="custom-time">Apr 10, 2025</time>
+                • Condition: Good
+              </small>
+            </header>
+            <p>Price: 25 BHD</p>
+            <p>Spacious and sturdy wooden desk, perfect for students.</p>
+            <footer>
+              <a href="DetailsPost.html#study-desk">View Item</a>
+            </footer>
+          </article>
+      
+          <!-- Item 3 -->
+          <article>
+            <img src="img/textbooks.jpg" alt="Used Textbooks" style="max-width: 100%; border-radius: 8px;">
+            <hr>
+            <header>
+              <h2><a href="DetailsPost.html#textbook">Used Textbooks Bundle</a></h2>
+              <small>
+                Posted by Fatima • 
+                <time datetime="2025-04-09" class="custom-time">Apr 9, 2025</time>
+                • Condition: Fair
+              </small>
+            </header>
+            <p>Price: 8 BHD</p>
+            <p>A set of university textbooks for IT and Cybersecurity courses.</p>
+            <footer>
+              <a href="DetailsPost.html#textbook">View Item</a>
+            </footer>
+          </article>
+      
+          <!-- Item 4 -->
+          <article>
+            <img src="img/Used-Laptop.jpg" alt="Used Laptop" style="max-width: 100%; border-radius: 8px;">
+            <hr>
+            <header>
+              <h2><a href="DetailsPost.html#Used-Laptop">Used Laptop</a></h2>
+              <small>
+                Posted by Khalid • 
+                <time datetime="2025-04-08" class="custom-time">Apr 8, 2025</time>
+                • Condition: Excellent
+              </small>
+            </header>
+            <p>Price: 230 BHD</p>
+            <p>Used Laptop. Almost brand new.</p>
+            <footer>
+              <a href="DetailsPost.html#Used-Laptop">View Item</a>
+            </footer>
+          </article>
+      
+          <!-- Item 5 -->
+          <article>
+            <img src="img/tablet.jpg" alt="Tablet" style="max-width: 100%; border-radius: 8px;">
+            <hr>
+            <header>
+              <h2><a href="DetailsPost.html#tablet">Drawing Tablet</a></h2>
+              <small>
+                Posted by Maryam • 
+                <time datetime="2025-04-06" class="custom-time">Apr 6, 2025</time>
+                • Condition: Like New
+              </small>
+            </header>
+            <p>Price: 140 BHD</p>
+            <p>Wacom tablet used for digital art. Great for beginners and pros.</p>
+            <footer>
+              <a href="DetailsPost.html#tablet">View Item</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+      
+      </main>
+    
+      <footer>
+        <p>&copy; 2025 Student Marketplace - Campus Hub</p>
+      </footer> 
+
+</body>
+</html>
