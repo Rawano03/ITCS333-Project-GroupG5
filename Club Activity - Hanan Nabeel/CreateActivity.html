@@ -1,0 +1,45 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>adding activity</title>
+    <link rel="stylesheet" href="st.css" />
+</head>
+<body>
+    <header class="container">
+        <h1>Add New Activity</h1>
+    </header>
+    
+    <main class="container">
+        <section>
+            <h2>Activity Details</h2>
+            <form action="#" method="POST">
+                <label for="activityName">Activity Name:</label>
+                <input type="text" id="activityName" name="activityName" required placeholder="Enter activity name" />
+
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="activities">Activities</option>
+                    <option value="workshops">Workshops</option>
+                    <option value="hackathons">Hackathons</option>
+                </select>
+                
+                <label for="responsiblePerson">Responsible Person:</label>
+                <input type="text" id="responsiblePerson" name="responsiblePerson" required placeholder="Enter responsible person's name"  />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="activityDescription">Activity Description:</label>
+                <textarea id="activityDescription" name="activityDescription" rows="4" required placeholder="Enter activity description"></textarea>
+            </form>
+            <section class="pagination">
+                <a href="DONE.html" role="button" class=" button nav-button">Submit</a>
+                <a href="activity.html" role="button" class=" button nav-button">Back</a>
+              </section>
+        </section>
+    </main>
+
+    <footer class="container">
+        <small>&copy; 2025 Campus Hub. All rights reserved.</small>
+    </footer>
+</body>
