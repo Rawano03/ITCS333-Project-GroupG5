@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Campus Hub - Add Course</title>
+        <meta name="viewport" content="width=device-width, intial-scale=1"/>
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <h1>Add New Course</h1>
+                <nav>
+                    <a id="home-page-button" href="../index.html" role="button">Campus Home Page</a>
+                    <a id="course-notes-button" href="mainListing_courseNotes.html" role="button">Course Notes Page</a>
+                </nav>
+                <hr/>
+            </header>
+            
+            <main>
+                <section class="form">
+                    <form name="course-details">
+                        <label>Course Code *</label>
+                        <input name="Course-Code" type="text" placeholder="Course Code" required>
+                        <label>Course Title *</label>
+                        <input name="Course-Title" type="text" placeholder="Course Title" required>
+                        <label>Course Department *</label>
+                        <select id="department" name="department" required>
+                            <option value="CS">Computer Science</option>
+                            <option value="CE">Computer Engineering</option>
+                            <option value="IS">Information System</option>
+                        </select>
+                        <label>Course Description</label>
+                        <textarea name="Course-Description" rows="2" placeholder="Course Description"></textarea>
+                        <label>Upload Course Notes *</label>
+                        <input id="upload-box" name="Upload-Notes" type="file" required>
+                        <input name="add-button" type="submit" value="Add Course">
+                        <input name="cancel" type="reset" value="Cancel">
+                    </form>
+                </section>
+            </main>
+            
+            <footer>
+                <hr/>
+                <p>&copy; 2025 Campus Hub. All rights reserved.</p>
+            </footer>    
+        </div>
+    </body>
+</html>
