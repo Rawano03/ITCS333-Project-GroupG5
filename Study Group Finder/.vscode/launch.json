@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open study-group-finder-details.html",
+            "file": "c:\\Users\\fatoo\\OneDrive\\Desktop\\ITCS333-project\\ITCS333-Project-GroupG5\\Study Group Finder\\study-group-finder-details.html"
+        }
+    ]
+}
