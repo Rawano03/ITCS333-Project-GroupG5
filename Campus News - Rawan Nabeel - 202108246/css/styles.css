@@ -1,4 +1,4 @@
-
+/* ==========style========== */
 .container {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -164,6 +164,7 @@ footer.container {
   .nav-button {
     width: 100%;
     max-width: 240px;
+
   }
 
   .dropdown-pair {
@@ -171,8 +172,9 @@ footer.container {
   }
 
   .pagination {
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     gap: 0.5rem;
+
   }
 }
 
