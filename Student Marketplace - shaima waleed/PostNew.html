@@ -56,6 +56,19 @@
   </p>
 </main>
 
+<script>
+  function showSuccessMessage(event) {
+    event.preventDefault();
+    document.getElementById('success-message').style.display = 'block';
+    event.target.reset();
+  }
+
+  function resetForm() {
+    document.querySelector('form').reset();
+    document.getElementById('success-message').style.display = 'none';
+  }
+</script>
+
   <footer>
     <p>&copy; 2025 Campus Hub | Student Marketplace</p>
   </footer>
