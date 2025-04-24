@@ -5,15 +5,15 @@
   <title>Campus Hub - News</title>
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/listing.js"></script>
 </head>
 <body>
   <header class="container">
     <h1>Campus News</h1>
     <nav>
       <ul>
-        <li><a href="../index.html" role="button" class="nav-button">Home Page</a></li>
+        <li><a href="Main_Listing.html" role="button" class="nav-button">Home Page</a></li>
         <li><a href="create.html" role="button" class="nav-button">Add News</a></li>
-        <li><a href="detail.html" role="button" class="nav-button">Display News Detail</a></li>
       </ul>
     </nav>
   </header>
@@ -24,16 +24,15 @@
         <div class="grid">
           <input type="search" name="search" placeholder="Search news..." class="search-wide" />
           <div class="dropdown-pair">
-            <select name="category">
+          <select name="category">
             <option value="">All Categories</option>
             <option value="events">Events</option>
             <option value="announcements">Announcements</option>
             <option value="alerts">Alerts</option>
-          </select>
+          </select> 
           <select name="sort">
             <option value="latest">Sort: Latest</option>
             <option value="oldest">Sort: Oldest</option>
-            <option value="popular">Sort: Most Popular</option>
           </select>
         </div>  
         </div>
@@ -43,64 +42,8 @@
     <hr />
 
     <section aria-label="News List">
-      <div class="grid">
-        <article>
-          <header>
-            <h2><a href="detail.html#library">Library Hours Extended During Finals</a></h2>
-            <small>
-              Posted on 
-              <time datetime="2025-03-24" class="custom-time">Mar 24, 2025</time>
-              • Category: Announcements
-            </small>
-          </header>
-          <p>The campus library will remain open 24/7 during finals week to support all students. Quiet zones and group study rooms are available.</p>
-          <footer>
-            <a href="detail.html#library">Read More</a>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h2><a href="detail.html#Spring">Spring Club Fair This Friday</a></h2>
-            <small>
-              Posted on 
-              <time datetime="2025-03-22" class="custom-time">Mar 22, 2025</time>
-              • Category: Announcements
-            </small>
-          </header>
-          <p>Dont miss the Spring Club Fair in the main courtyard! Discover new clubs, meet people, and get involved on campus.</p>
-          <footer>
-            <a href="detail.html#Spring">Read More</a>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h2><a href="detail.html#cyberclub">Cybersecurity Club Now Open</a></h2>
-            <small>Posted on 
-              <time datetime="2025-03-27" class="custom-time">Mar 27, 2025</time> 
-              • Category: Announcements
-            </small>
-          </header>
-          <p>The Cybersecurity Club is now open to all IT students. Join to build your skills and compete in real security challenges.</p>
-          <footer>
-            <a href="detail.html#cyberclub">Read More</a>
-          </footer>
-        </article>
-        <article>
-          <header>
-            <h2><a href="detail.html#aiworkshop">AI Workshop: Introduction to Machine Learning</a></h2>
-            <small>Posted on 
-              <time datetime="2025-03-27" class="custom-time">Mar 27, 2025</time> 
-              • Category: Events
-            </small>
-          </header>
-          <p>We're hosting an AI workshop for IT students covering machine learning basics. No experience needed. Join to learn and practice.</p>
-          <footer>
-            <a href="detail.html#aiworkshop">Read More</a>
-          </footer>
-        </article>        
-        
+      <div class="grid">  
+        <div id="post-detail">Loading post...</div>
       </div>
     </section>
 
@@ -119,5 +62,7 @@
   <footer class="container">
     <small>&copy; 2025 Campus Hub. All rights reserved.</small>
   </footer>
+
+  
 </body>
 </html>
