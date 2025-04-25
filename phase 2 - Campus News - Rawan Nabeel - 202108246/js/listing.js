@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sortType = sortSelect.value;
 
     if (search) {
+      const pattern = new RegExp(`\\b${search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, "i");
       result = result.filter(post =>
-        post.title.toLowerCase().includes(search) ||
-        post.body.toLowerCase().includes(search)
+        pattern.test(post.title) || pattern.test(post.body)
       );
     }
 
