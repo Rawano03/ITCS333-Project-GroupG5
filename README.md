@@ -1,6 +1,6 @@
 # ITCS333-Project-GroupG5
 
-**University of Bahrain – ITCS333: Software Project Management**
+**University of Bahrain – ITCS333: INTERNET SOFTWARE DEVELOPMENT**
 
 Welcome to our group project repository! This project is part of the ITCS333 course.  
 Each team member has developed a separate module contributing to an integrated student-centered web platform called **Campus Hub**.
