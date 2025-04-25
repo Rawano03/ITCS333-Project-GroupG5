@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adding Activity</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+  <link rel="stylesheet" href="st.css" />
+</head>
+
+<body>
+  <header class="container">
+    <h1>Add New Activity</h1>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Activity Details</h2>
+      <form id="activityForm">
+        <label for="activityName">Activity Name:</label>
+        <input type="text" id="activityName" name="activityName" required placeholder="Enter activity name" />
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="">Select Category</option>
+          <option value="activities">Activities</option>
+          <option value="workshops">Workshops</option>
+          <option value="hackathons">Hackathons</option>
+        </select>
+
+        <label for="responsiblePerson">Responsible Person:</label>
+        <input type="text" id="responsiblePerson" name="responsiblePerson" required placeholder="Enter responsible person's name" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter valid email address" />
+
+        <label for="activityDescription">Activity Description:</label>
+        <textarea id="activityDescription" name="activityDescription" rows="4" required placeholder="Enter activity description"></textarea>
+
+       
+        <button type="submit" class="button nav-button">Submit</button>
+
+       
+        <p id="error" style="color: red; margin-top: 10px;"></p>
+      </form>
+
+      
+      <section class="pagination" style="margin-top: 1.5rem;">
+        <a href="activity.html" role="button" class="button nav-button">Back</a>
+      </section>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>&copy; 2025 Campus Hub. All rights reserved.</small>
+  </footer>
+
+  <script src="Create.js"></script>
+</body>
+</html>
