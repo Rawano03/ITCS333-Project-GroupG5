@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   const postsPerPage = 6;
 
-  // Fetch data and modify it to match real-world UI
+  // Fetch and prepare post data
   async function loadData() {
     container.innerHTML = "<p>Loading...</p>";
     try {
@@ -19,14 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("Failed to fetch posts.");
       const posts = await response.json();
 
-      // Modify fake data: add readable titles, body, category, image
-      allPosts = posts.map(post => ({
-        ...post,
-        category: ["events", "alerts", "announcements"][post.id % 3],
-        title: `Campus Update #${post.id}`,
-        body: `This is the summary for news item #${post.id}. It contains updates about the university campus.`,
-        image: `https://picsum.photos/seed/${post.id}/400/200`
-      }));
+      allPosts = posts.map(post => {
+        const fakeDate = new Date();
+        fakeDate.setDate(fakeDate.getDate() - post.id);
+
+        return {
+          ...post,
+          category: ["events", "alerts", "announcements"][post.id % 3],
+          title: `Campus Update #${post.id}`,
+          body: `This is the summary for news item #${post.id}.`,
+          image: `https://picsum.photos/seed/${post.id}/400/200`,
+          createdAt: fakeDate.toISOString()
+        };
+      });
 
       render();
     } catch (err) {
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Apply search, category, and sort filters
+  // Apply filters and sort
   function applyFilters() {
     let result = [...allPosts];
 
@@ -53,18 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
       result = result.filter(post => post.category === selectedCategory);
     }
 
-    if (sortType === "latest") result.reverse(); // JSONPlaceholder is oldest → newest by default
+    if (sortType === "latest") {
+      result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } else if (sortType === "oldest") {
+      result.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    }
 
     return result;
   }
 
-  // Get paginated results
+  // Return a slice of paginated posts
   function getPage(list, page, perPage) {
     const start = (page - 1) * perPage;
     return list.slice(start, start + perPage);
   }
 
-  // Render all visible posts + pagination
+  // Render posts
   function render() {
     const filtered = applyFilters();
     const paginated = getPage(filtered, currentPage, postsPerPage);
@@ -78,27 +87,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     paginated.forEach(post => {
       const card = document.createElement("article");
-      card.innerHTML = `
-        <img src="${post.image}" alt="News image" class="news-image" />
+
+      // Create loading message
+      const loadingMsg = document.createElement("p");
+      loadingMsg.textContent = "Loading image...";
+      loadingMsg.style.color = "gray";
+
+      // Create the image
+      const img = new Image();
+      img.className = "news-image";
+      img.alt = "News image";
+
+      img.onload = () => {
+        loadingMsg.remove();
+        card.insertBefore(img, card.firstChild);
+      };
+
+      img.onerror = () => {
+        loadingMsg.textContent = "Image failed to load. Please try refreshing.";
+        loadingMsg.style.color = "red";
+      };
+
+      img.src = post.image;
+
+      // Post content
+      card.innerHTML += `
         <header>
           <h2><a href="detail.html?id=${post.id}">${post.title}</a></h2>
-          <small>${new Date().toLocaleDateString()} • ${post.category}</small>
+          <small>${new Date(post.createdAt).toLocaleDateString()} • ${post.category}</small>
         </header>
         <p>${post.body.slice(0, 100)}...</p>
         <footer><a href="detail.html?id=${post.id}">Read More</a></footer>
       `;
+
+      // Add to DOM
+      card.prepend(loadingMsg);
       container.appendChild(card);
     });
 
     renderPagination(filtered.length);
   }
 
-  // Render Previous / Page Numbers / Next
+  // Render pagination buttons
   function renderPagination(totalItems) {
     paginationContainer.innerHTML = "";
     const totalPages = Math.ceil(totalItems / postsPerPage);
 
-    // Previous
     const prev = document.createElement("li");
     prev.innerHTML = `<a href="#" class="secondary">Previous</a>`;
     prev.addEventListener("click", e => {
@@ -110,23 +144,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     paginationContainer.appendChild(prev);
 
-    // Page Numbers
     for (let i = 1; i <= totalPages; i++) {
       const li = document.createElement("li");
-      if (i === currentPage) {
-        li.innerHTML = `<strong>${i}</strong>`;
-      } else {
-        li.innerHTML = `<a href="#">${i}</a>`;
-        li.addEventListener("click", e => {
-          e.preventDefault();
-          currentPage = i;
-          render();
-        });
-      }
+      li.innerHTML = i === currentPage
+        ? `<strong>${i}</strong>`
+        : `<a href="#">${i}</a>`;
+      li.addEventListener("click", e => {
+        e.preventDefault();
+        currentPage = i;
+        render();
+      });
       paginationContainer.appendChild(li);
     }
 
-    // Next
     const next = document.createElement("li");
     next.innerHTML = `<a href="#" class="secondary">Next</a>`;
     next.addEventListener("click", e => {
@@ -139,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     paginationContainer.appendChild(next);
   }
 
-  // Re-render when filters change
+  // Event listeners
   searchInput.addEventListener("input", () => {
     currentPage = 1;
     render();
@@ -155,6 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // Start
+  // Load on start
   loadData();
 });
