@@ -1,0 +1,57 @@
+/* General Body Styling */
+body {
+    background-color: #f5f9ff;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header.container {
+    background-color: #e3f2fd;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Button styling */
+  input[type="button"], button {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Footer styling */
+  footer.container {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: #e3f2fd;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Review items */
+  #reviews-container {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+  
+  .review-item {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
