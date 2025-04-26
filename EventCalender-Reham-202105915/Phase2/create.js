@@ -10,5 +10,5 @@ document.querySelector('form').addEventListener('submit', (event) => {
         return;
     }
 
-    alert('Event created successfully!'); // Replace with actual submission logic
+    alert('Event created successfully!');
 });
