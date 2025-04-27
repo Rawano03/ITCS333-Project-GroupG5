@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Campus Hub - Course Notes</title>
+        <meta name="viewport" content="width=device-width, intial-scale=1"/>
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <h1>Course Notes</h1>
+                <nav>
+                    <a id="home-page-button" href="../index.html" role="button">Campus Home Page</a>
+                    <a id="add-course-button" href="createCourse.html" role="button">Add New Course</a>
+                </nav>
+                <hr/>
+            </header>
+            
+            <main>
+                <section class="search">
+                    <form name="search" id="search-form">
+                        <div class="bar">
+                            <input id="search-bar" name="search-bar" type="search" placeholder="Search Courses">
+                        </div>
+                        <div class="list">
+                            <select id="filter-list" name="filter">
+                                <option value="All" selected>All Departments</option>
+                                <option value="CS">Computer Science</option>
+                                <option value="CE">Computer Engineering</option>
+                                <option value="IS">Information System</option>
+                            </select>
+                            <select id="sort-list" name="sort">
+                                <option value="level" selected>Sort: Level</option>
+                                <option value="name">Sort: Name</option>
+                            </select>
+                        </div>
+                    </form>
+                    <script src="listCourses.js"></script>
+                </section>
+
+                <section class="load">
+                    <p>Loading Courses...</p>
+                </section>
+
+                <section class="content">
+                    <article>
+                        <h5>ITCE114</h5>
+                        <h6>Digital Design I</h6>
+                        <p>This course covers the fundamentals of digital logic and design.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITIS213</h5>
+                        <h6>Database Management Systems</h6>
+                        <p>This course presents the fundamental concepts for designing, using, and implementing database systems.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITCS214</h5>
+                        <h6>Data Structures</h6>
+                        <p>This course covers data structures and their implementations in an object-oriented programming language.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITCE250</h5>
+                        <h6>Digital Logic</h6>
+                        <p>This course covers number systems, combinational logic circuits and network design, MSI integrated circuits in combinational networks design, and sequential circuits analysis and design.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITCS316</h5>
+                        <h6>Human-Computer Interaction</h6>
+                        <p>This course covers techniques used to analyze and design Human-Computer Interaction systems.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITCS333</h5>
+                        <h6>Internet Software Development</h6>
+                        <p>This course exposes the key technologies underlying the World-Wide Web and the principles and tools that are used to develop dynamic web applications.</p>
+                        <a id="veiw-details" href="courseDetails.html"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITIS420</h5>
+                        <h6>Multimedia Technology and Design</h6>
+                        <p>This course introduces the student to standard and newly developed interactive multimedia technologies.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                    <article>
+                        <h5>ITCS453</h5>
+                        <h6>Multimedia and Hypermedia Systems</h6>
+                        <p>This course covers techniques used to design multimedia systems using conceptual frameworks and multimedia authoring tools.</p>
+                        <a id="veiw-details" href="#"  role="button">View Notes</a>
+                    </article>
+                </section>
+
+                <section class="pages">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">...</a>
+                </section>
+            </main>
+            
+            <footer>
+                <hr/>
+                <p>&copy; 2025 Campus Hub. All rights reserved.</p>
+            </footer>
+        </div>
+        <script src="listCourses.js"></script>
+    </body>
+</html>
