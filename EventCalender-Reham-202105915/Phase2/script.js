@@ -9,10 +9,8 @@ loadingIndicator.style.display = 'none';
 document.body.appendChild(loadingIndicator);
 
 async function fetchEvents() {
-    loadingIndicator.style.display = 'block'; 
+    loadingIndicator.style.display= 'block'; 
     
-    // Show loading
-
     try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Network response was not ok');
