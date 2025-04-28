@@ -1,7 +1,6 @@
 // Base URL for your API
 const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
 
-// DOM Elements
 const eventsContainer = document.querySelector('.grid');
 const searchInput = document.querySelector('input[placeholder="Search events"]');
 const loadingIndicator = document.createElement('div');
@@ -9,9 +8,10 @@ loadingIndicator.innerText = 'Loading...';
 loadingIndicator.style.display = 'none';
 document.body.appendChild(loadingIndicator);
 
-// Fetch and render events
 async function fetchEvents() {
-    loadingIndicator.style.display = 'block'; // Show loading
+    loadingIndicator.style.display = 'block'; 
+    
+    // Show loading
 
     try {
         const response = await fetch(API_URL);
