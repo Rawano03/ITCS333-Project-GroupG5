@@ -1,29 +1,5 @@
-async function fetchEvents() {
-    const loadingIndicator = document.getElementById('loading');
-    loadingIndicator.style.display = 'block'; // Show loading indicator
-
-    try {
-        const response = await fetch('https://api.example.com/events');
-        if (!response.ok) throw new Error('Network response was not ok');
-        const events = await response.json();
-        renderEvents(events);
-    } catch (error) {
-        console.error('Fetch error:', error);
-        alert('Failed to load events. Please try again later.');
-    } finally {
-        loadingIndicator.style.display = 'none'; // Hide loading indicator
-    }
-}
-
-
-
-
-
-
-// script.js
-
 // Base URL for your API
-const API_URL = 'https://api.example.com/events'; // Replace with your actual API
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
 
 // DOM Elements
 const eventsContainer = document.querySelector('.grid');
