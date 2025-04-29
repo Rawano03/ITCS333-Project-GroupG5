@@ -18,37 +18,12 @@
   </header>
 
   <main class="container">
-     <form action="#" method="post" onsubmit="showSuccessMessage(event)">
-         <label for="itemname">Item Name <span aria-hidden="true">*</span></label>
-         <input type="text" id="itemname" name="itemname" required placeholder="Enter item name"
-          pattern=".{3,100}"
-          title="Item name must be 3–100 characters."/>
-
-         <label for="description">Description <span aria-hidden="true">*</span></label>
-         <textarea id="description" name="description" required rows="4" 
-          placeholder="Describe your item..." 
-          minlength="10" maxlength="500"></textarea>
- 
-         <label for="price">Price (BD) <span aria-hidden="true">*</span></label>
-         <input type="number" id="price" name="price" step="1" required placeholder="Enter price" min="1" max="999"/>
-
-         <label for="category">Category <span aria-hidden="true">*</span></label>
-         <select id="category" name="category" required>
-           <option value="">Select category</option>
-           <option value="electronics">Electronics</option>
-           <option value="furniture">Furniture</option>
-           <option value="books">Books</option>
-           <option value="art">Art</option>
-           <option value="others">Others</option>
-          </select>
-
-         <label for="image">Image URL (optional)</label>
-         <input type="url" id="image" name="image" placeholder="https://example.com/image.jpg" />
-
-         <div class="flex-center">
-          <button type="submit">Post Item</button>
-          <button type="button" onclick="resetForm()">Cancel</button>
-         </div>
+    <form id="create-form">
+      <input type="text" id="name" placeholder="Product Name" required />
+      <input type="number" id="price" placeholder="Price" required />
+      <textarea id="description" placeholder="Product Description" required></textarea>
+      <button type="submit">Add Product</button>
+    
      </form>
 
   <p id="success-message" style="text-align:center; color: green; margin-top: 1rem; display: none;">
