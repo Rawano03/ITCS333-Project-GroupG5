@@ -9,13 +9,20 @@ let products = [];
 let currentPage = 1;
 const itemsPerPage = 4;
 
-// Fetch data from JSON file
+// Fetch data 
 async function fetchProducts() {
   try {
     loading.style.display = "block";
-    const response = await fetch("marketplace-data.json");
-    if (!response.ok) throw new Error("Failed to fetch data.");
-    products = await response.json();
+
+    const localData = localStorage.getItem("products");
+    if (localData) {
+      products = JSON.parse(localData);
+    } else {
+      const response = await fetch("Student Marketplace - shaima waleed/marketplace-data.json");
+      if (!response.ok) throw new Error("Failed to fetch data.");
+      products = await response.json();
+    }
+
     renderProducts();
   } catch (error) {
     productList.innerHTML = `<p>Error loading products: ${error.message}</p>`;

@@ -1,28 +1,25 @@
-document.getElementById("create-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-  
-    const name = document.getElementById("name").value.trim();
-    const Price = document.getElementById("name").value.trim();
-    const description = document.getElementById("description").value.trim();
-  
-    if (!name || !description || !Price ) {
-      alert("Please fill in all fields");
-      return;
-    }
-  
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    const newProduct = {
-      id: Date.now(), // unique ID
-      name,
-      Price ,
-      description
-    };
-  
-    products.push(newProduct);
-    localStorage.setItem("products", JSON.stringify(products));
-  
-    alert("Product added successfully!");
-    window.location.href = "Marketplace.html"; // Redirect after save
-  });
- 
-  
+document.getElementById("create-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+  const description = document.getElementById("description").value;
+
+  const newProduct = {
+    id: Date.now(),
+    name,
+    price,
+    description,
+    image: "img/default.jpg", // يمكن تغييره لاحقًا
+    datePosted: new Date().toISOString(),
+    postedBy: "You", 
+    condition: "New"
+  };
+
+  const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
+  existingProducts.push(newProduct);
+  localStorage.setItem("products", JSON.stringify(existingProducts));
+
+  document.getElementById("success-message").style.display = "block";
+  event.target.reset();
+});
