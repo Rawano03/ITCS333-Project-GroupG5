@@ -1,0 +1,52 @@
+[
+    {
+      "id": "headphones",
+      "title": "Wireless Headphones",
+      "postedBy": "Ali",
+      "date": "2025-04-12",
+      "condition": "Like New",
+      "category": "electronics",
+      "price": 25,
+      "image": "img/headphones.jpg"
+    },
+    {
+      "id": "study-desk",
+      "title": "Study Desk",
+      "postedBy": "Sara",
+      "date": "2025-04-10",
+      "condition": "Good",
+      "category": "furniture",
+      "price": 40,
+      "image": "img/study-desk.jpg"
+    },
+    {
+      "id": "textbook",
+      "title": "Used Textbooks Bundle",
+      "postedBy": "Fatima",
+      "date": "2025-04-09",
+      "condition": "Fair",
+      "category": "books",
+      "price": 10,
+      "image": "img/textbooks.jpg"
+    },
+    {
+      "id": "Used-Laptop",
+      "title": "Used Laptop",
+      "postedBy": "Khalid",
+      "date": "2025-04-08",
+      "condition": "Excellent",
+      "category": "electronics",
+      "price": 150,
+      "image": "img/Used-Laptop.jpg"
+    },
+    {
+      "id": "tablet",
+      "title": "Drawing Tablet",
+      "postedBy": "Maryam",
+      "date": "2025-04-06",
+      "condition": "Like New",
+      "category": "electronics",
+      "price": 75,
+      "image": "img/tablet.jpg"
+    }
+  ]

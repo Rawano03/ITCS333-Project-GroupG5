@@ -24,4 +24,5 @@ document.getElementById("create-form").addEventListener("submit", function(e) {
     alert("Product added successfully!");
     window.location.href = "Marketplace.html"; // Redirect after save
   });
+ 
   
