@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post Details</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section id="product-detail" aria-label="Marketplace Item Details">
+    </section>
+    <footer>
+      <a href="Marketplace.html">⬅ Back to Marketplace</a>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash.substring(1); 
+      const articles = document.querySelectorAll("article");
+  
+      articles.forEach(article => {
+        if (article.id === hash) {
+          article.style.display = "block";
+        } else {
+          article.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+  <script src="DetailsPost.js"></script>
+</body>
+</html>
