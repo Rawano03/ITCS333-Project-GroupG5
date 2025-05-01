@@ -22,7 +22,7 @@ async function fetchProducts() {
     if (localData) {
       products = JSON.parse(localData);
     } else {
-      const response = await fetch("Student Marketplace - shaima waleed/marketplace-data.json");
+      const response = await fetch("marketplace-data.json");
       if (!response.ok) throw new Error("Failed to fetch data.");
       products = await response.json();
     }
