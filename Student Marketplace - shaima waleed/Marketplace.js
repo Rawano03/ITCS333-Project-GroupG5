@@ -1,9 +1,13 @@
+const DETAIL_API = "https://jsonplaceholder.typicode.com/posts";
+
+document.addEventListener("DOMContentLoaded", async () => {
 const productList = document.getElementById("product-list");
 const loading = document.getElementById("loading");
 const pagination = document.getElementById("pagination");
 const searchInput = document.getElementById("search-input");
 const categorySelect = document.getElementById("category-select");
 const sortSelect = document.getElementById("sort-select");
+
 
 let products = [];
 let currentPage = 1;
@@ -136,3 +140,4 @@ sortSelect.addEventListener("change", () => {
 
 // Initial load
 fetchProducts();
+})
