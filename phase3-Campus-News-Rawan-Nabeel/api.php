@@ -19,19 +19,21 @@ $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), "/");
 $path = explode("/", $uri);
 $method = $_SERVER['REQUEST_METHOD'];
 
+$apiIndex = array_search("api.php", $path);
+
 function respond($code, $data) {
     http_response_code($code);
     echo json_encode($data);
     exit;
 }
 
-if (!isset($path[1]) || $path[0] !== "api.php" || $path[1] !== "endpoint" || $path[2] !== "news") {
+if ($apiIndex === false || !isset($path[$apiIndex + 1]) || $path[$apiIndex + 1] !== "endpoint" || $path[$apiIndex + 2] !== "news") {
     respond(200, ["message" => "Campus Hub API is active"]);
 }
 
-$newsId = $path[3] ?? null;
-$subPath = $path[4] ?? null;
-$commentId = $path[5] ?? null;
+$newsId = $path[$apiIndex + 3] ?? null;
+$subPath = $path[$apiIndex + 4] ?? null;
+$commentId = $path[$apiIndex + 5] ?? null;
 
 // GET
 if ($method === "GET") {
