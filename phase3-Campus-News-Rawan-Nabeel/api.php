@@ -27,9 +27,16 @@ function respond($code, $data) {
     exit;
 }
 
-if ($apiIndex === false || !isset($path[$apiIndex + 1]) || $path[$apiIndex + 1] !== "endpoint" || $path[$apiIndex + 2] !== "news") {
+if (
+    $apiIndex === false ||
+    !isset($path[$apiIndex + 1]) ||
+    $path[$apiIndex + 1] !== "endpoint" ||
+    !isset($path[$apiIndex + 2]) ||
+    $path[$apiIndex + 2] !== "news"
+) {
     respond(200, ["message" => "Campus Hub API is active"]);
 }
+
 
 $newsId = $path[$apiIndex + 3] ?? null;
 $subPath = $path[$apiIndex + 4] ?? null;
