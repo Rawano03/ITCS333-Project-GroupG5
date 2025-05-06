@@ -1,4 +1,4 @@
-const API_BASE = "https://c8223598-aef4-497e-8bf1-254e6acb5d4e-00-38rgo79wc4l4u.sisko.replit.dev/phase3-Campus-News-Rawan-Nabeel/api.php/endpoint";
+const API_BASE = "https://c8223598-aef4-497e-8bf1-254e6acb5d4e-00-38rgo79wc4l4u.sisko.replit.dev/phase3-Campus-News-Rawan-Nabeel/index.php/endpoint";
 const API_URL = `${API_BASE}/news`;
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -32,7 +32,7 @@ function renderPost(post) {
   const article = document.createElement("article");
 
   const img = new Image();
-  img.src = post.image ? `${API_BASE.replace('/api.php/endpoint', '')}/uploads/${post.image}` : "";
+  img.src = post.image ? `${API_BASE.replace('/index.php/endpoint', '')}/uploads/${post.image}` : "";
   img.alt = "News image";
   img.className = "news-image";
   article.appendChild(img);
