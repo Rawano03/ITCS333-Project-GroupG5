@@ -1,8 +1,9 @@
 const API_BASE = "https://c8223598-aef4-497e-8bf1-254e6acb5d4e-00-38rgo79wc4l4u.sisko.replit.dev/phase3-Campus-News-Rawan-Nabeel/index.php/endpoint";
 const API_URL = `${API_BASE}/news`;
+let postId = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const postId = new URLSearchParams(window.location.search).get("id");
+  postId = new URLSearchParams(window.location.search).get("id");
   const container = document.getElementById("post-detail");
 
   if (!postId) {
@@ -16,10 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const post = await res.json();
 
     renderPost(post);
-    loadComments(postId);
-    setupCommentForm(postId);
-    setupEditButton(post);
-    setupDeleteButton(postId);
+    loadComments();
+    setupCommentForm();
   } catch (err) {
     container.innerHTML = `<p style="color:red;">${err.message}</p>`;
   }
@@ -74,134 +73,17 @@ function renderPost(post) {
   `;
 
   container.appendChild(article);
+
+  setupEditButton();
+  setupDeleteButton();
 }
 
-function loadComments(postId) {
-  fetch(`${API_URL}/${postId}/comments`)
-    .then(res => res.json())
-    .then(comments => {
-      const commentList = document.getElementById("commentList");
-      commentList.innerHTML = "";
-      comments.forEach(c => {
-        const wrapper = document.createElement("article");
-        wrapper.setAttribute("data-id", c.id);
-        wrapper.innerHTML = `
-          <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.25rem;">
-            <strong style="white-space: nowrap; margin-top: 4px;">${c.author}:</strong>
-            <textarea class="comment-text" readonly 
-              oninput="this.style.height='auto';this.style.height=this.scrollHeight + 'px';"
-              style="flex: 1; resize: none; overflow: hidden; min-height: 2rem; padding: 0.4rem 0.5rem; font-size: 0.9rem;">${c.comment_text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</textarea>
-          </div>
-          <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-            <button class="edit-comment" style="background-color: #28a745; color: white;">Edit</button>
-            <button class="save-comment" style="display:none;" class="secondary">Save</button>
-            <button class="cancel-edit" style="display:none;">Cancel</button>
-            <button class="delete-comment" style="background-color: #dc3545; color: white; margin-left:auto;">Delete</button>
-          </div>
-        `;
-
-        commentList.appendChild(wrapper);
-      });
-
-      document.querySelectorAll(".edit-comment").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const wrapper = btn.closest("article");
-          const textarea = wrapper.querySelector(".comment-text");
-          textarea.removeAttribute("readonly");
-          wrapper.querySelector(".save-comment").style.display = "inline-block";
-          wrapper.querySelector(".cancel-edit").style.display = "inline-block";
-          btn.style.display = "none";
-          textarea.dataset.original = textarea.value;
-        });
-      });
-
-      document.querySelectorAll(".cancel-edit").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const wrapper = btn.closest("article");
-          const textarea = wrapper.querySelector(".comment-text");
-          textarea.value = textarea.dataset.original;
-          textarea.setAttribute("readonly", true);
-          wrapper.querySelector(".save-comment").style.display = "none";
-          wrapper.querySelector(".edit-comment").style.display = "inline-block";
-          btn.style.display = "none";
-        });
-      });
-
-      document.querySelectorAll(".save-comment").forEach(btn => {
-        btn.addEventListener("click", async () => {
-          const wrapper = btn.closest("article");
-          const commentId = wrapper.dataset.id;
-          const textarea = wrapper.querySelector(".comment-text");
-          const text = textarea.value.trim();
-          if (text.length < 3) return alert("Comment too short.");
-
-          const res = await fetch(`${API_URL}/${postId}/comments/${commentId}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ comment_text: text })
-          });
-
-          if (res.ok) {
-            alert("Comment updated.");
-            loadComments(postId);
-          } else {
-            alert("Failed to update.");
-          }
-        });
-      });
-
-      document.querySelectorAll(".delete-comment").forEach(btn => {
-        btn.addEventListener("click", async () => {
-          const wrapper = btn.closest("article");
-          const commentId = wrapper.dataset.id;
-          const confirmed = confirm("Delete this comment?");
-          if (!confirmed) return;
-
-          const res = await fetch(`${API_URL}/${postId}/comments/${commentId}`, {
-            method: "DELETE"
-          });
-
-          if (res.ok) {
-            alert("Deleted.");
-            loadComments(postId);
-          } else {
-            alert("Failed to delete.");
-          }
-        });
-      });
-    });
-}
-
-function setupCommentForm(postId) {
-  const form = document.getElementById("commentForm");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const comment = document.getElementById("comment").value.trim();
-    const author = document.getElementById("author").value.trim();
-    if (comment.length < 3 || author.length < 2) {
-      alert("Fill both fields properly.");
-      return;
-    }
-
-    const res = await fetch(`${API_URL}/${postId}/comments`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, author })
-    });
-
-    if (res.ok) {
-      alert("Comment added");
-      location.reload();
-    } else {
-      alert("Failed to post comment");
-    }
-  });
-}
-
-function setupEditButton(post) {
+function setupEditButton() {
   const editBtn = document.getElementById("edit-btn");
   const saveBtn = document.getElementById("save-btn");
   const cancelBtn = document.getElementById("cancel-edit");
+
+  if (!editBtn || !saveBtn || !cancelBtn) return;
 
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -228,8 +110,6 @@ function setupEditButton(post) {
       return;
     }
 
-    const postId = new URLSearchParams(window.location.search).get("id");
-
     const res = await fetch(`${API_URL}/${postId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -245,8 +125,10 @@ function setupEditButton(post) {
   });
 }
 
-function setupDeleteButton(postId) {
+function setupDeleteButton() {
   const deleteBtn = document.getElementById("delete-btn");
+  if (!deleteBtn) return;
+
   deleteBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const confirmDelete = confirm("Are you sure you want to delete this news post?");
@@ -265,3 +147,136 @@ function setupDeleteButton(postId) {
   });
 }
 
+function setupCommentForm() {
+  const form = document.getElementById("commentForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const comment = document.getElementById("comment").value.trim();
+    const author = document.getElementById("author").value.trim();
+
+    if (comment.length < 3 || author.length < 2) {
+      alert("Fill both fields properly.");
+      return;
+    }
+
+    const res = await fetch(`${API_URL}/${postId}/comments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment, author })
+    });
+
+    if (res.ok) {
+      alert("Comment added");
+      location.reload();
+    } else {
+      const error = await res.json();
+      alert("Failed to post comment: " + (error?.error || res.statusText));
+    }
+  });
+}
+
+function loadComments() {
+  fetch(`${API_URL}/${postId}/comments`)
+    .then(res => res.json())
+    .then(renderComments)
+    .catch(() => document.getElementById("commentList").innerHTML = "<p>Failed to load comments.</p>");
+}
+
+function renderComments(comments) {
+  const commentList = document.getElementById("commentList");
+  commentList.innerHTML = "";
+
+  comments.forEach(c => {
+    const wrapper = document.createElement("article");
+    wrapper.setAttribute("data-id", c.id);
+    wrapper.innerHTML = `
+      <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.25rem;">
+        <strong style="white-space: nowrap; margin-top: 4px;">${c.author}:</strong>
+        <textarea class="comment-text" readonly 
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight + 'px';"
+          style="flex: 1; resize: none; overflow: hidden; min-height: 2rem; padding: 0.4rem 0.5rem; font-size: 0.9rem;">${c.comment_text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</textarea>
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+        <button class="edit-comment" style="background-color: #28a745; color: white;">Edit</button>
+        <button class="save-comment" style="display:none;">Save</button>
+        <button class="cancel-edit" style="display:none;">Cancel</button>
+        <button class="delete-comment" style="background-color: #dc3545; color: white; margin-left:auto;">Delete</button>
+      </div>
+    `;
+
+    commentList.appendChild(wrapper);
+  });
+
+  bindCommentActions();
+}
+
+function bindCommentActions() {
+  document.querySelectorAll(".edit-comment").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const wrapper = btn.closest("article");
+      const textarea = wrapper.querySelector(".comment-text");
+      textarea.removeAttribute("readonly");
+      wrapper.querySelector(".save-comment").style.display = "inline-block";
+      wrapper.querySelector(".cancel-edit").style.display = "inline-block";
+      btn.style.display = "none";
+      textarea.dataset.original = textarea.value;
+    });
+  });
+
+  document.querySelectorAll(".cancel-edit").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const wrapper = btn.closest("article");
+      const textarea = wrapper.querySelector(".comment-text");
+      textarea.value = textarea.dataset.original;
+      textarea.setAttribute("readonly", true);
+      wrapper.querySelector(".save-comment").style.display = "none";
+      wrapper.querySelector(".edit-comment").style.display = "inline-block";
+      btn.style.display = "none";
+    });
+  });
+
+  document.querySelectorAll(".save-comment").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const wrapper = btn.closest("article");
+      const commentId = wrapper.dataset.id;
+      const textarea = wrapper.querySelector(".comment-text");
+      const text = textarea.value.trim();
+      if (text.length < 3) return alert("Comment too short.");
+
+      const res = await fetch(`${API_URL}/${postId}/comments/${commentId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ comment_text: text })
+      });
+
+      if (res.ok) {
+        alert("Comment updated.");
+        loadComments();
+      } else {
+        alert("Failed to update.");
+      }
+    });
+  });
+
+  document.querySelectorAll(".delete-comment").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const wrapper = btn.closest("article");
+      const commentId = wrapper.dataset.id;
+      const confirmed = confirm("Delete this comment?");
+      if (!confirmed) return;
+
+      const res = await fetch(`${API_URL}/${postId}/comments/${commentId}`, {
+        method: "DELETE"
+      });
+
+      if (res.ok) {
+        alert("Deleted.");
+        loadComments();
+      } else {
+        alert("Failed to delete.");
+      }
+    });
+  });
+}
