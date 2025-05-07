@@ -4,9 +4,14 @@ const API_URL = `${API_BASE}/news`;
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   const cancelBtn = document.getElementById("cancel-btn");
+  const submitBtn = form.querySelector("button[type='submit']");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Disable submit button immediately
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
 
     const title = document.getElementById("title").value.trim();
     const category = document.getElementById("category").value;
@@ -21,7 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (content.length < 20 || content.length > 1000) errors.push("Content must be 20–1000 characters.");
     if (!author || author.length < 2 || author.length > 100) errors.push("Author name must be 2–100 characters.");
 
-    if (errors.length) return alert(errors.join("\n"));
+    if (errors.length) {
+      alert(errors.join("\n"));
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+      return;
+    }
 
     const formData = new FormData();
     formData.append("title", title);
@@ -46,10 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "Main_Listing.html";
     } catch (err) {
       alert("Submission error: " + err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
     }
   });
 
-  // Cancel button functionality
   if (cancelBtn) {
     cancelBtn.addEventListener("click", (e) => {
       e.preventDefault();

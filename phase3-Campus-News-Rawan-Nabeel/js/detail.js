@@ -149,33 +149,50 @@ function setupDeleteButton() {
 
 function setupCommentForm() {
   const form = document.getElementById("commentForm");
-  if (!form) return;
+  const submitBtn = form.querySelector("button[type='submit']");
+  if (!form || !submitBtn) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Disable the button immediately
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Posting...";
+
     const comment = document.getElementById("comment").value.trim();
     const author = document.getElementById("author").value.trim();
 
     if (comment.length < 3 || author.length < 2) {
       alert("Fill both fields properly.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Post Comment";
       return;
     }
 
-    const res = await fetch(`${API_URL}/${postId}/comments`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, author })
-    });
+    try {
+      const res = await fetch(`${API_URL}/${postId}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ comment, author })
+      });
 
-    if (res.ok) {
-      alert("Comment added");
-      location.reload();
-    } else {
-      const error = await res.json();
-      alert("Failed to post comment: " + (error?.error || res.statusText));
+      if (res.ok) {
+        alert("Comment added");
+        location.reload();
+      } else {
+        const error = await res.json();
+        alert("Failed to post comment: " + (error?.error || res.statusText));
+      }
+    } catch (err) {
+      alert("Network error.");
+    } finally {
+      // Re-enable button only if not reloading
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Post Comment";
     }
   });
 }
+
 
 function loadComments() {
   fetch(`${API_URL}/${postId}/comments`)
