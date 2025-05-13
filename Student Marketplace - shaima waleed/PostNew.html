@@ -11,42 +11,28 @@
     <h1>Post New Item</h1>
     <nav>
       <ul>
-        <li><a href="Marketplace.html" role="button" class="nav-button" >Marketplace</a></li>
-    
+        <li><a href="index.html" role="button" class="nav-button">Marketplace</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
     <form id="create-form">
-      <input type="text" id="name" placeholder="Product Name" required />
-      <input type="number" id="price" placeholder="Price" required />
-      <textarea id="description" placeholder="Product Description" required></textarea>
+      <input type="text" id="name" name="name" placeholder="Product Name" required />
+      <input type="number" id="price" name="price" placeholder="Price" required />
+      <textarea id="description" name="description" placeholder="Product Description" required></textarea>
       <button type="submit">Add Product</button>
-     </form>
-     
-     <script src="create.js"></script>
+    </form>
 
-  <p id="success-message" style="text-align:center; color: green; margin-top: 1rem; display: none;">
-    ✅ Your item has been successfully posted and is under review.
-  </p>
-</main>
-
-<script>
-  function showSuccessMessage(event) {
-    event.preventDefault();
-    document.getElementById('success-message').style.display = 'block';
-    event.target.reset();
-  }
-
-  function resetForm() {
-    document.querySelector('form').reset();
-    document.getElementById('success-message').style.display = 'none';
-  }
-</script>
+    <p id="success-message" style="text-align:center; color: green; margin-top: 1rem; display: none;">
+      ✅ Your item has been successfully posted and is under review.
+    </p>
+  </main>
 
   <footer>
     <p>&copy; 2025 Campus Hub | Student Marketplace</p>
   </footer>
+
+  <script src="create.js"></script>
 </body>
 </html>

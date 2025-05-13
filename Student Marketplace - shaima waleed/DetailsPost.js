@@ -1,99 +1,79 @@
-// detail.js
+document.addEventListener("DOMContentLoaded", () => {
+  const API_URL = "http://127.0.0.1:3000/api/marketplace"
+  const productList = document.getElementById("product-list")
+  const loading = document.getElementById("loading")
+  const pagination = document.getElementById("pagination")
 
-const products = [
-    {
-      id: "headphones",
-      title: "Wireless Headphones",
-      image: "img/headphones.jpg",
-      postedBy: "Ali",
-      date: "2025-04-12",
-      condition: "Like New",
-      category: "Electronics",
-      price: "10 BHD",
-      description: "Experience high-quality sound with these like-new wireless headphones. Perfect for daily use or studying in a quiet environment."
-    },
-    {
-      id: "study-desk",
-      title: "Study Desk",
-      image: "img/study-desk.jpg",
-      postedBy: "Sara",
-      date: "2025-04-10",
-      condition: "Good",
-      category: "Furniture",
-      price: "25 BHD",
-      description: "Spacious and sturdy wooden desk, perfect for students. Ideal for study sessions and working from home."
-    },
-    {
-      id: "textbook",
-      title: "Used Textbooks Bundle",
-      image: "img/textbooks.jpg",
-      postedBy: "Fatima",
-      date: "2025-04-09",
-      condition: "Fair",
-      category: "Books",
-      price: "8 BHD",
-      description: "A set of university textbooks for IT and Cybersecurity courses. Perfect for students looking for affordable textbooks."
-    },
-    {
-      id: "Used-Laptop",
-      title: "Used Laptop",
-      image: "img/Used-Laptop.jpg",
-      postedBy: "Khalid",
-      date: "2025-04-08",
-      condition: "Excellent",
-      category: "Electronics",
-      price: "230 BHD",
-      description: "Apple laptop, almost brand new, perfect for studying and designing."
-    },
-    {
-      id: "tablet",
-      title: "Tablet",
-      image: "img/tablet.jpg",
-      postedBy: "Maryam",
-      date: "2025-04-06",
-      condition: "Like New",
-      category: "Electronics",
-      price: "140 BHD",
-      description: "Wacom tablet used for digital art. Great for beginners and pros. Comes with pen and all accessories."
+  let products = []
+  let currentPage = 1
+  const itemsPerPage = 4
+
+  async function fetchProducts() {
+    loading.style.display = "block"
+
+    try {
+      const res = await fetch(API_URL)
+      if (!res.ok) throw new Error("Failed to fetch products")
+
+      const data = await res.json()
+      products = data
+      renderProducts()
+    } catch (err) {
+      productList.innerHTML = `<p>Error: ${err.message}</p>`
+    } finally {
+      loading.style.display = "none"
     }
-  ];
-  
-  function getProductById(id) {
-    return products.find(product => product.id === id);
   }
-  
-  function renderProduct(product) {
-    const container = document.getElementById("product-detail");
-  
-    if (!product) {
-      container.innerHTML = "<p>Product not found.</p>";
-      return;
+
+  function renderProducts() {
+    const start = (currentPage - 1) * itemsPerPage
+    const end = start + itemsPerPage
+    const paginated = products.slice(start, end)
+
+    productList.innerHTML = ""
+
+    if (paginated.length === 0) {
+      productList.innerHTML = "<p>No items found.</p>"
+      pagination.innerHTML = ""
+      return
     }
-  
-    container.innerHTML = `
-      <article>
+
+    paginated.forEach(product => {
+      const card = document.createElement("article")
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}" style="max-width: 100%; border-radius: 8px;">
+        <hr>
         <header>
-          <h1>${product.title}</h1>
-          <img src="${product.image}" alt="${product.title}" style="max-width: 100%; border-radius: 8px;" />
-          <hr />
-          <p>Posted by ${product.postedBy} • 
-            <time datetime="${product.date}" class="custom-time">
-              ${new Date(product.date).toDateString()}
-            </time>
-          </p>
-          <p>Condition: ${product.condition}</p>
-          <p>Category: ${product.category}</p>
-          <p>Price: ${product.price}</p>
+          <h2><a href="detailpost.html?id=${product.id}">${product.title}</a></h2>
+          <small>
+            Posted by ${product.posted_by} •
+            <time datetime="${product.date_posted}">${product.date_posted}</time>
+            • Status: ${product.status}
+          </small>
         </header>
-        <p>${product.description}</p>
-      </article>
-    `;
+        <footer>
+          <a href="detailpost.html?id=${product.id}">View Item</a>
+        </footer>
+      `
+      productList.appendChild(card)
+    })
+
+    renderPagination(Math.ceil(products.length / itemsPerPage))
   }
-  
-  // Extract the ID from the URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get("id");
-  
-  const product = getProductById(productId);
-  renderProduct(product);
-  
+
+  function renderPagination(totalPages) {
+    pagination.innerHTML = ""
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button")
+      btn.textContent = i
+      if (i === currentPage) btn.classList.add("primary")
+      btn.addEventListener("click", () => {
+        currentPage = i
+        renderProducts()
+      })
+      pagination.appendChild(btn)
+    }
+  }
+
+  fetchProducts()
+})
