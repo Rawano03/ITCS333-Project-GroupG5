@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Marketplace</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    article {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <h1>Student Marketplace</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" role="button" class="nav-button">Home Page</a></li>
+        <li><a href="PostNew.html" role="button" class="nav-button">Post New Item</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main >
+    <section aria-label="Marketplace List">
+      <p id="loading">Loading...</p>
+      <div id="product-list" class="grid"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Student Marketplace - Campus Hub</p>
+  </footer>
+
+  <script src="Marketplace.js"></script>
+</body>
+</html>
