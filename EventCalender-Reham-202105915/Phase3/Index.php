@@ -30,7 +30,7 @@ try {
     exit;
 }
 
-// Parse URI path
+// Parse URl path
 $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), "/");
 $path = explode("/", $uri);
 $method = $_SERVER['REQUEST_METHOD'];
