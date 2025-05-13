@@ -8,7 +8,7 @@ header("Content-Type: application/json");
 // Set the default timezone
 date_default_timezone_set('Asia/Bahrain');
 
-// Handle preflight OPTIONS request
+// Handle OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
