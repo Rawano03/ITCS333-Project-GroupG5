@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   exit;
 }
 
-require('../../connection.php');
+require('connection.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
   case "GET":
