@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <title>Campus Hub - Create New Event</title>
+</head>
+<body>
+    <script src="script.js" defer></script>
+    <script src="create.js" defer></script>
+    <header>
+        <h1>Create New Event</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="create.html">Create Event</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section id="create" class="mt-4">
+            <form>
+                <div>
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" required />
+                </div>
+                <div>
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" required />
+                </div>
+                <div>
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" rows="3" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+                <a href="index.html" class="button secondary">Cancel</a>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Campus Hub</p>
+    </footer>
+</body>
+</html>

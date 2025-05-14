@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Reviews</title>
+  <link rel="stylesheet" href="new.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+</head>
+<body>
+
+  <header class="container">
+    <h1>Course Reviews</h1>
+    <p>Write your course feedback below.</p>
+
+    <form>
+      <label for="course_name">Course Name:</label>
+      <input type="text" id="course_name" name="course_name" required />
+
+      <label>Rating:</label>
+      <fieldset>
+        <label><input type="radio" name="rating" value="5" required> 5</label>
+        <label><input type="radio" name="rating" value="4"> 4</label>
+        <label><input type="radio" name="rating" value="3"> 3</label>
+        <label><input type="radio" name="rating" value="2"> 2</label>
+        <label><input type="radio" name="rating" value="1"> 1</label>
+      </fieldset>
+
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </header>
+
+  <div id="reviews-container" class="container"></div>
+
+  <footer class="container">
+    <hr />
+    <small>&copy; 2025 Campus Hub. All rights reserved.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
