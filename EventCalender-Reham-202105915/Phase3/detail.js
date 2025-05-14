@@ -1,3 +1,5 @@
+const API_BASE = "https://8e846cd0-b1b9-4482-acb3-6cb12d162633-00-13x7mtq6cznka.sisko.replit.dev/EventCalender-Reham-202105915/Phase3/Index.php/endpoint";
+const API_URL = `${API_BASE}events`;
 async function fetchEventDetails(eventId) {
     try {
         const response = await fetch(`${API_URL}/${eventId}`);
