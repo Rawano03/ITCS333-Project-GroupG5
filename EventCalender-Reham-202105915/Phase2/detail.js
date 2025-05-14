@@ -1,3 +1,5 @@
+const API_Base = 'https://replit.com/@rm5988391/PHP-MySQL#htdocs/Index.php';
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
 async function fetchEventDetails(eventId) {
     try {
         const response = await fetch(`${API_URL}/${eventId}`);

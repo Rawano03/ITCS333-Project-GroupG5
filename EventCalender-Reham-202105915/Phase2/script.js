@@ -1,4 +1,5 @@
-// Base URL for your API
+// Base URL for API
+const API_Base = 'https://replit.com/@rm5988391/PHP-MySQL#htdocs/Index.php';
 const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
 
 const eventsContainer = document.querySelector('.grid');
