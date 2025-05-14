@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const API_URL = "http://127.0.0.1:3000/api/marketplace"
+  const API_URL = "https://122225da-dc0e-4f44-ae8a-200ebe109b9a-00-2mffjt9a35okh.pike.replit.dev/"
   const productList = document.getElementById("product-list")
   const loading = document.getElementById("loading")
 

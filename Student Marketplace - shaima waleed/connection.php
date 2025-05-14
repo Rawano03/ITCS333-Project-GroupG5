@@ -7,8 +7,8 @@ error_reporting(E_ALL);
 // change to your real values from replit
 define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'marketplace-333');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'main');
+define('DB_PASS', 'abcd1234');
 
 
 try {
