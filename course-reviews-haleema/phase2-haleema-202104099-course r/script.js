@@ -1,0 +1,68 @@
+// Run JavaScs
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const reviewsContainer = document.createElement("div");
+    reviewsContainer.id = "reviews-container";
+    document.body.appendChild(reviewsContainer);
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Stop form from refreshing the page
+  
+      // Get user inputs
+      const rating = form.querySelector('input[name="rating"]:checked');
+      const feedback = document.getElementById("feedback").value.trim();
+      const errors = [];
+  
+      // Validate inputs
+      if (!rating) {
+        errors.push("Please select a rating.");
+      }
+      if (feedback.length < 10) {
+        errors.push("Feedback must be at least 10 characters.");
+      }
+  
+      if (errors.length > 0) {
+        alert(errors.join("\n"));
+        return;
+      }
+  
+      // Prepare data to send (simulate sending)
+      const reviewData = {
+        rating: rating.value,
+        feedback: feedback
+      };
+  
+      try {
+        // Simulate sending to server
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(reviewData)
+        });
+  
+        if (!res.ok) {
+          throw new Error("Failed to submit review.");
+        }
+  
+        // Show success message
+        alert("Thank you for your review!");
+  
+        // Add the review to the page
+        const reviewItem = document.createElement("div");
+        reviewItem.className = "review-item";
+        reviewItem.innerHTML = `
+          <p><strong>${rating.value}</strong></p>
+          <p>${feedback}</p>
+        `;
+        reviewsContainer.appendChild(reviewItem);
+  
+        form.reset(); // Reset the form fields
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    });
+  });
+  
+  
+   
