@@ -1,24 +1,24 @@
 <?php
-//Set response content type to JSON
+// Allow CORS and set response content type to JSON
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// Set the default timezone
+// Set the default timezone to Bahrain
 date_default_timezone_set('Asia/Bahrain');
 
-// Handle OPTIONS request
+// Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
 // Setup DB connection
-$host = "127.0.0.1";
-$user = getenv("db_user");
-$pass = getenv("db_pass");
-$db   = getenv("db_name");
+$host = "127.0.0.1"; // Database host
+$user = getenv("db_user"); // Database user from environment variable
+$pass = getenv("db_pass"); // Database password from environment variable
+$db   = getenv("db_name"); // Database name from environment variable
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
@@ -30,7 +30,7 @@ try {
     exit;
 }
 
-// Parse URl path
+// Parse URI path
 $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), "/");
 $path = explode("/", $uri);
 $method = $_SERVER['REQUEST_METHOD'];
@@ -43,24 +43,21 @@ function respond($code, $data) {
 }
 
 // Validate endpoint
-if ($path[0] !== "events") {
-    respond(404, ["error" => "Invalid endpoint."]);
+if (count($path) < 2 || $path[1] !== "events") {
+    respond(200, ["message" => "Events API is active"]);
 }
 
 // Extract path parameters
-$eventId = $path[1] ?? null;
+$eventId = $path[2] ?? null;
 
 // Handle GET requests
 if ($method === "GET") {
-    // List events
+    // List all events or a specific event
     if (!$eventId) {
-        $stmt = $pdo->query("SELECT * FROM events ORDER BY date ASC");
+        $stmt = $pdo->query("SELECT * FROM events");
         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        respond(200, ["data" => $events]);
-    }
-
-    // Get single event
-    if (is_numeric($eventId)) {
+        respond(200, $events);
+    } else {
         $stmt = $pdo->prepare("SELECT * FROM events WHERE id = ?");
         $stmt->execute([$eventId]);
         $event = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -71,46 +68,41 @@ if ($method === "GET") {
 
 // Handle POST requests
 if ($method === "POST") {
-    // Create new event
     $data = json_decode(file_get_contents("php://input"), true);
     $title = htmlspecialchars(trim($data["title"] ?? ""), ENT_QUOTES, 'UTF-8');
     $date = htmlspecialchars(trim($data["date"] ?? ""), ENT_QUOTES, 'UTF-8');
     $description = htmlspecialchars(trim($data["description"] ?? ""), ENT_QUOTES, 'UTF-8');
 
-    if (strlen($title) < 5 || strlen($description) < 10) {
+    if (strlen($title) < 5 || strlen($description) < 20) {
         respond(400, ["error" => "Invalid event input."]);
     }
 
-    $stmt = $pdo->prepare("INSERT INTO events (title, date, description, created_at) VALUES (?, ?, ?, NOW())");
+    $stmt = $pdo->prepare("INSERT INTO events (title, date, description) VALUES (?, ?, ?)");
     $stmt->execute([$title, $date, $description]);
     respond(201, ["message" => "Event created."]);
 }
 
 // Handle PUT requests
 if ($method === "PUT") {
-    if (is_numeric($eventId)) {
-        $data = json_decode(file_get_contents("php://input"), true);
-        $title = htmlspecialchars(trim($data["title"] ?? ""), ENT_QUOTES, 'UTF-8');
-        $date = htmlspecialchars(trim($data["date"] ?? ""), ENT_QUOTES, 'UTF-8');
-        $description = htmlspecialchars(trim($data["description"] ?? ""), ENT_QUOTES, 'UTF-8');
+    if (!$eventId) respond(400, ["error" => "Event ID is required."]);
 
-        if (strlen($title) < 5 || strlen($description) < 10) {
-            respond(400, ["error" => "Invalid event input."]);
-        }
+    $data = json_decode(file_get_contents("php://input"), true);
+    $title = htmlspecialchars(trim($data["title"] ?? ""), ENT_QUOTES, 'UTF-8');
+    $date = htmlspecialchars(trim($data["date"] ?? ""), ENT_QUOTES, 'UTF-8');
+    $description = htmlspecialchars(trim($data["description"] ?? ""), ENT_QUOTES, 'UTF-8');
 
-        $stmt = $pdo->prepare("UPDATE events SET title = ?, date = ?, description = ? WHERE id = ?");
-        $stmt->execute([$title, $date, $description, $eventId]);
-        respond(200, ["message" => "Event updated."]);
-    }
+    $stmt = $pdo->prepare("UPDATE events SET title = ?, date = ?, description = ? WHERE id = ?");
+    $stmt->execute([$title, $date, $description, $eventId]);
+    respond(200, ["message" => "Event updated."]);
 }
 
 // Handle DELETE requests
 if ($method === "DELETE") {
-    if (is_numeric($eventId)) {
-        $stmt = $pdo->prepare("DELETE FROM events WHERE id = ?");
-        $stmt->execute([$eventId]);
-        respond(204, []); // No Content
-    }
+    if (!$eventId) respond(400, ["error" => "Event ID is required."]);
+
+    $stmt = $pdo->prepare("DELETE FROM events WHERE id = ?");
+    $stmt->execute([$eventId]);
+    respond(204, []); // No Content
 }
 
 // Fallback if no route matched

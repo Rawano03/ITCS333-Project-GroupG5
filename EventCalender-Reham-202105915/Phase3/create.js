@@ -1,6 +1,5 @@
-const API_Base = 'https://replit.com/@rm5988391/PHP-MySQL#htdocs/Index.php';
-const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
-
+const API_BASE = "https://8e846cd0-b1b9-4482-acb3-6cb12d162633-00-13x7mtq6cznka.sisko.replit.dev/EventCalender-Reham-202105915/Phase3/Index.php/endpoint";
+const API_URL = `${API_BASE}events`;
 document.querySelector('form').addEventListener('submit', (event) => {
     event.preventDefault(); 
 
