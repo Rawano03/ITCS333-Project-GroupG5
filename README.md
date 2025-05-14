@@ -9,9 +9,9 @@ The goal of **Campus Hub** is to enhance student life by offering various tools 
 
 ---
 
-| Name                        | GitHub Username     | Student ID | Module               |
-|-----------------------------|---------------------|------------|-----------------------|
-| Rawan Nabeel                | Rawano03            | 202108246  | Campus News          |
+| Name                        | GitHub Username     | Student ID | Module               | replit link               |
+|-----------------------------|---------------------|------------|-----------------------|--------------------------|
+| Rawan Nabeel                | Rawano03            | 202108246  | Campus News          |https://c8223598-aef4-497e-8bf1-254e6acb5d4e-00-38rgo79wc4l4u.sisko.replit.dev/phase3-Campus-News-Rawan-Nabeel/index.php
 | Batool Mohamed             | BatoolM2020         | 202005875  | Course Notes         |
 | Haleema Kahmis Ali         | haleema89           | 202104099  | Course Reviews       |
 | Fatima Ali Salman Madan    | Crepusculum333      | 202106949  | Study Group Finder   |
