@@ -13,7 +13,7 @@ The goal of **Campus Hub** is to enhance student life by offering various tools 
 |-----------------------------|---------------------|------------|-----------------------|--------------------------|
 | Rawan Nabeel                | Rawano03            | 202108246  | Campus News          |https://c8223598-aef4-497e-8bf1-254e6acb5d4e-00-38rgo79wc4l4u.sisko.replit.dev/phase3-Campus-News-Rawan-Nabeel/index.php
 | Batool Mohamed             | BatoolM2020         | 202005875  | Course Notes         |
-| Haleema Kahmis Ali         | haleema89           | 202104099  | Course Reviews       |
+| Haleema Kahmis Ali         | haleema89           | 202104099  | Course Reviews       |https://replit.com/@haleemakhamis19/my-app
 | Fatima Ali Salman Madan    | Crepusculum333      | 202106949  | Study Group Finder   |
 | Shaima Waleed Mohammed     | 27shayma            | 202103160  | Student Marketplace  |
 | Hanan Nabeel               | Hanan136            | 202106695  | Club Activity        |
