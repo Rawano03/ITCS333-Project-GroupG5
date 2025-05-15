@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "http://127.0.0.1:3000/marketplace"
+  const API_URL = "http://127.0.0.1:3000/api/index.php"
   const form = document.getElementById("create-form")
 
   if (!form) {
