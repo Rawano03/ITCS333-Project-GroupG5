@@ -1,81 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const API_BASE = 'index.php'
-  const itemsContainer = document.getElementById('marketplace-items')
-  const form = document.getElementById('item-creation-form')
+document.addEventListener("DOMContentLoaded", async () => {
+  const API_URL = "https://122225da-dc0e-4f44-ae8a-200ebe109b9a-00-2mffjt9a35okh.pike.replit.dev/"
+  const productList = document.getElementById("product-list")
+  const loading = document.getElementById("loading")
 
-  if (itemsContainer) {
-    fetchItems()
-  }
+  if (!productList || !loading) return
 
-  if (form) {
-    form.addEventListener('submit', handleSubmit)
-  }
+  loading.textContent = "Loading..."
 
-  function fetchItems() {
-    fetch(API_BASE)
-      .then(response => response.json())
-      .then(data => {
-        itemsContainer.innerHTML = ''
-        data.forEach(item => {
-          const itemElement = createItemCard(item)
-          itemsContainer.appendChild(itemElement)
-        })
-      })
-      .catch(error => console.error('Error fetching items:', error))
-  }
+  try {
+    const res = await fetch(API_URL)
 
-  function createItemCard(item) {
-    const div = document.createElement('div')
-    div.className = 'marketplace-item'
-    div.innerHTML = `
-      <img src="${item.image}" alt="${item.title}">
-      <h3>${item.title}</h3>
-      <p>${item.description}</p>
-      <p>Price: $${item.price}</p>
-      <p>Status: ${item.status}</p>
-      <p>Posted by: ${item.posted_by}</p>
-      <p>Date: ${item.date_posted}</p>
-    `
-    return div
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-
-    const title = document.getElementById('title').value
-    const price = document.getElementById('price').value
-    const description = document.getElementById('description').value
-    const image = document.getElementById('image').value || 'img/default.jpg'
-    const posted_by = document.getElementById('posted_by').value
-    const status = document.getElementById('status').value
-    const category = document.getElementById('category').value
-    const date_posted = document.getElementById('date_posted').value
-
-    const newItem = {
-      title,
-      price,
-      description,
-      image,
-      posted_by,
-      status,
-      category,
-      date_posted
+    if (!res.ok) {
+      throw new Error("Failed to fetch products")
     }
 
-    fetch(API_BASE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newItem)
-    })
-      .then(res => res.json())
-      .then(response => {
-        alert('Item posted successfully!')
-        form.reset()
-        fetchItems()
-      })
-      .catch(err => {
-        console.error('Submission error:', err)
-        alert('Failed to post item')
-      })
+    const products = await res.json()
+
+    loading.style.display = "none"
+
+    if (!Array.isArray(products) || products.length === 0) {
+      productList.innerHTML = "<p>No items available.</p>"
+      return
+    }
+
+    productList.innerHTML = products.map(product => `
+      <div class='container' style="border: 1px solid #ccc; border-radius: 8px; padding: 8px; margin-top: 1rem;">
+        <header>
+          <h2><a href="detailspost.html?id=${product.id}">${product.title}</a></h2>
+          <p><strong>Price:</strong> ${product.price} BHD</p>
+          <small>
+            Posted by ${product.posted_by} • 
+            <time datetime="${product.date_posted}">${product.date_posted}</time> • 
+            Status: ${product.status}
+          </small>
+        </header>
+        <p>${product.description || ""}</p>
+        <footer>
+          <a href="detailspost.html?id=${product.id}" role="button">View</a>
+        </footer>
+              </div>  
+    `).join("")
+  } catch (err) {
+    loading.style.display = "none"
+    productList.innerHTML = `<p style="color:red;">${err.message}</p>`
   }
 })
