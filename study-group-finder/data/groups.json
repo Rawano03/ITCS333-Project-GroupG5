@@ -1,0 +1,142 @@
+[
+  {
+    "id": "calc-101",
+    "name": "Calculus Study Group",
+    "description": "Weekly study sessions for Calculus II students. We meet every Tuesday and Thursday in the Math Building, Room 204. Our group focuses on working through problem sets together, preparing for exams, and helping each other understand complex concepts.",
+    "subject": "Mathematics",
+    "members": 12,
+    "created": "2025-03-15",
+    "location": "Math Building, Room 204",
+    "meetingTimes": "Tuesday and Thursday, 4:00 PM - 6:00 PM",
+    "currentFocus": "Chapter 4: Applications of Differentiation",
+    "rules": [
+      "Come prepared with questions and materials",
+      "Respect everyone's learning pace",
+      "Phones on silent during sessions",
+      "Collaborate and help each other"
+    ],
+    "organizer": {
+      "name": "David Kim",
+      "avatar": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+    },
+    "membersList": [
+      {
+        "name": "David Kim",
+        "role": "Organizer",
+        "avatar": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+      },
+      {
+        "name": "Maria Garcia",
+        "role": "Active Member",
+        "avatar": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+      }
+    ],
+    "comments": [
+      {
+        "author": "Maria Garcia",
+        "avatar": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
+        "date": "2025-04-14",
+        "text": "Can we add an extra session before the midterm? I could use some extra help with optimization problems."
+      },
+      {
+        "author": "David Kim",
+        "avatar": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg",
+        "date": "2025-04-13",
+        "text": "I'll bring some practice problems for related rates this Thursday."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "cs-senior",
+    "name": "CS Senior Project Collaboration",
+    "description": "Group for Computer Science seniors working on capstone projects. Share ideas, get feedback, and collaborate on solutions to common problems.",
+    "subject": "Computer Science",
+    "members": 8,
+    "created": "2025-03-20",
+    "location": "Computing Center, Lab 3",
+    "meetingTimes": "Monday, 6:00 PM - 8:00 PM",
+    "currentFocus": "Database design and API development",
+    "rules": [
+      "Share resources generously",
+      "Be constructive with feedback",
+      "Respect intellectual property"
+    ],
+    "organizer": {
+      "name": "Alex Johnson",
+      "avatar": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+    },
+    "membersList": [
+      {
+        "name": "Alex Johnson",
+        "role": "Organizer",
+        "avatar": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+      },
+      {
+        "name": "Taylor Smith",
+        "role": "Member",
+        "avatar": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
+      }
+    ],
+    "comments": [],
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "bio-101",
+    "name": "Biology Study Partners",
+    "description": "Preparing for midterms together. All biology students welcome! We meet in the Science Library study rooms and focus on mastering key concepts through discussion and practice exams.",
+    "subject": "Science",
+    "members": 15,
+    "created": "2025-03-10",
+    "location": "Science Library, Study Room B",
+    "meetingTimes": "Wednesday and Friday, 3:00 PM - 5:00 PM",
+    "currentFocus": "Cell Biology and Genetics",
+    "rules": [
+      "Bring your textbook",
+      "Take turns explaining concepts",
+      "Create and share study guides"
+    ],
+    "organizer": {
+      "name": "Jordan Lee",
+      "avatar": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
+    },
+    "membersList": [
+      {
+        "name": "Jordan Lee",
+        "role": "Organizer",
+        "avatar": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
+      }
+    ],
+    "comments": [],
+    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "biz-study",
+    "name": "Entrepreneurship Club Study",
+    "description": "For students taking Entrepreneurship courses. Case study discussions and business plan workshops. We analyze real-world business cases and provide feedback on each other's startup ideas.",
+    "subject": "Business",
+    "members": 5,
+    "created": "2025-03-25",
+    "location": "Business Building, Room 234",
+    "meetingTimes": "Thursday, 5:00 PM - 7:00 PM",
+    "currentFocus": "Business Model Canvas Development",
+    "rules": [
+      "Prepare assigned case studies before meetings",
+      "Provide constructive feedback",
+      "Respect confidentiality of ideas shared"
+    ],
+    "organizer": {
+      "name": "Sam Roberts",
+      "avatar": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
+    },
+    "membersList": [
+      {
+        "name": "Sam Roberts",
+        "role": "Organizer",
+        "avatar": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
+      }
+    ],
+    "comments": [],
+    "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+  }
+]

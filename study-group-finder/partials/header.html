@@ -1,0 +1,30 @@
+<header class="container" style="margin-top: 8px">
+  <h1><a href="/" class="logo">Campus Hub</a></h1>
+  <nav>
+    <ul id="nav-links">
+      <li><a href="/index.html">All Groups</a></li>
+      <li><a href="/create.html">Create Group</a></li>
+    </ul>
+  </nav>
+  <hr />
+  <script type="module">
+    import { logout } from "/js/auth.js";
+    const nav = document.getElementById("nav-links");
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (user) {
+      nav.insertAdjacentHTML(
+        "beforeend",
+        `<li><span>Hello, ${user.username}</span></li>
+         <li><button id="logout-btn" class="secondary">Log out</button></li>`
+      );
+      document.getElementById("logout-btn").addEventListener("click", logout);
+    } else {
+      nav.insertAdjacentHTML(
+        "beforeend",
+        `<li><a href="/login.html">Log in</a></li>
+         <li><a href="/register.html">Register</a></li>`
+      );
+    }
+  </script>
+</header>

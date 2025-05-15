@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Create Study Group</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" src="/js/create.js" defer></script>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+    <main class="container">
+      <h1>Create a New Study Group</h1>
+      <form class="study-group-form">
+        <div class="form-grid">
+          <div class="form-section">
+            <label for="groupName">
+              Group Name
+              <input
+                type="text"
+                id="groupName"
+                name="groupName"
+                placeholder="Calculus II Study Group"
+                required
+              />
+            </label>
+
+            <label for="subject">
+              Subject
+              <select id="subject" name="subject" required>
+                <option value="" selected disabled>Select subject</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Business">Business</option>
+                <option value="English Literature">English Literature</option>
+                <option value="History">History</option>
+                <option value="Physics">Physics</option>
+                <option value="Biology">Biology</option>
+              </select>
+            </label>
+
+            <label for="description">
+              Group Description
+              <textarea
+                id="description"
+                name="description"
+                rows="4"
+                placeholder="What will your group focus on?"
+                required
+              ></textarea>
+            </label>
+
+            <label for="location">
+              Meeting Location
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Math Building, Room 204"
+                required
+              />
+            </label>
+
+            <label for="meetingTimes">
+              Meeting Times
+              <input
+                type="text"
+                id="meetingTimes"
+                name="meetingTimes"
+                placeholder="Tuesday and Thursday, 4:00 PM - 6:00 PM"
+                required
+              />
+            </label>
+
+            <label for="currentFocus">
+              Current Focus
+              <input
+                type="text"
+                id="currentFocus"
+                name="currentFocus"
+                placeholder="Chapter 4: Applications of Differentiation"
+              />
+            </label>
+          </div>
+
+          <div class="form-section">
+            <label>Group Photo</label>
+            <div class="file-upload">
+              <input
+                type="file"
+                id="groupPhoto"
+                name="groupPhoto"
+                accept="image/*"
+              />
+              <label for="groupPhoto">
+                <span>Click to upload or drag and drop</span>
+                <small>PNG, JPG up to 2MB</small>
+              </label>
+            </div>
+
+            <label for="members">
+              Maximum Members
+              <input
+                type="number"
+                id="members"
+                name="members"
+                min="2"
+                max="20"
+                value="6"
+              />
+            </label>
+
+            <label for="rules">
+              Group Rules
+              <textarea
+                id="rules"
+                name="rules"
+                rows="4"
+                placeholder="Enter each rule on a new line"
+              ></textarea>
+              <small
+                >Enter each rule on a new line. For example: Come prepared with
+                questions and materials Respect everyone's learning pace Phones
+                on silent during sessions</small
+              >
+            </label>
+
+            <label for="organizerName">
+              Your Name (Organizer)
+              <input
+                type="text"
+                id="organizerName"
+                name="organizerName"
+                required
+              />
+            </label>
+
+            <label>Profile Picture (Optional)</label>
+            <div class="file-upload">
+              <input
+                type="file"
+                id="organizerAvatar"
+                name="organizerAvatar"
+                accept="image/*"
+              />
+              <label for="organizerAvatar">
+                <span>Click to upload a profile picture</span>
+                <small>PNG, JPG up to 1MB</small>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="create-button">
+            Create Study Group
+          </button>
+          <a href="index.html" role="button" class="cancel-button">Cancel</a>
+        </div>
+      </form>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch("/partials/header.html")
+        .then((r) => r.text())
+        .then(
+          (html) =>
+            (document.getElementById("header-placeholder").innerHTML = html)
+        );
+      fetch("/partials/footer.html")
+        .then((r) => r.text())
+        .then(
+          (html) =>
+            (document.getElementById("footer-placeholder").innerHTML = html)
+        );
+    </script>
+  </body>
+</html>

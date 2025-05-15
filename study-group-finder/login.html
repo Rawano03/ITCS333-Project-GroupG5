@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login | Campus Hub</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module">
+      import { login } from "/js/auth.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("form").addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fd = new FormData(e.target);
+          try {
+            await login({
+              username: fd.get("username"),
+              password: fd.get("password"),
+            });
+            location.href = "/index.html";
+          } catch (err) {
+            alert(err.message);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+    <main class="container">
+      <h1>Log in</h1>
+      <form style="max-width: 400px; margin: auto">
+        <label
+          >Username
+          <input name="username" required />
+        </label>
+        <label
+          >Password
+          <input type="password" name="password" required />
+        </label>
+        <button type="submit" class="create-button" style="width: 100%">
+          Log in
+        </button>
+      </form>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      ["header", "footer"].forEach((p) =>
+        fetch(`/partials/${p}.html`)
+          .then((r) => r.text())
+          .then((h) => {
+            document.getElementById(`${p}-placeholder`).innerHTML = h;
+          })
+      );
+    </script>
+  </body>
+</html>

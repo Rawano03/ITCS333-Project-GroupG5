@@ -1,0 +1,60 @@
+<!-- detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Group Details</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" src="/js/details.js" defer></script>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <main class="container group-detail">
+      <div class="featured-image">
+        <img id="group-photo" src="" alt="" />
+        <p class="image-caption" id="image-caption"></p>
+      </div>
+
+      <header class="group-header">
+        <h1 id="group-name">Loading…</h1>
+        <div class="group-meta" id="group-meta"></div>
+      </header>
+
+      <section class="group-description" id="group-description"></section>
+
+      <section class="group-details" id="group-details"></section>
+
+      <section class="group-members" id="group-members">
+        <h3>Members</h3>
+        <div class="member-list" id="member-list"></div>
+      </section>
+
+      <section class="comments-section">
+        <h3>Comments</h3>
+        <div class="comment-form">
+          <textarea
+            id="new-comment"
+            placeholder="Add a comment…"
+            rows="3"
+          ></textarea>
+          <button id="post-comment" class="join-button">Post Comment</button>
+        </div>
+        <div id="comments-list"></div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      ["header", "footer"].forEach((part) =>
+        fetch(`/partials/${part}.html`)
+          .then((r) => r.text())
+          .then(
+            (html) =>
+              (document.getElementById(`${part}-placeholder`).innerHTML = html)
+          )
+      );
+    </script>
+  </body>
+</html>

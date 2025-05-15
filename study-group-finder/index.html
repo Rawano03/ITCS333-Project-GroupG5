@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Study Group Finder</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+    <main class="container">
+      <section class="search-filters" aria-label="Search & Filters">
+        <input
+          name="search"
+          type="search"
+          placeholder="Search study groups..."
+          aria-label="Search study groups"
+        />
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label for="subject">Subject</label>
+            <select id="subject">
+              <option value="all" selected>All Subjects</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Science">Science</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Business">Business</option>
+              <option value="English Literature">English Literature</option>
+              <option value="History">History</option>
+              <option value="Physics">Physics</option>
+              <option value="Biology">Biology</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="sort">Sort By</label>
+            <select id="sort">
+              <option value="newest" selected>Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="most-members">Most Members</option>
+              <option value="fewest-members">Fewest Members</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <div class="create-group-banner">
+        <h2>Don't see a group that fits your needs?</h2>
+        <p>Start your own study group and connect with other students.</p>
+        <a href="create.html" class="create-button">Create New Study Group</a>
+      </div>
+
+      <section aria-label="Groups List" class="group-listings"></section>
+
+      <template id="group-card-template">
+        <article class="group-card">
+          <div class="group-image">
+            <img src="" alt="" />
+          </div>
+          <div class="group-content">
+            <header>
+              <h2 class="group-name"></h2>
+              <div class="group-meta">
+                <span class="group-date"
+                  >Created on <time datetime=""></time
+                ></span>
+                <span class="group-subject"></span>
+                <span class="group-members"></span>
+              </div>
+            </header>
+            <p class="group-description"></p>
+            <ul class="group-details">
+              <li class="group-location"></li>
+              <li class="group-schedule"></li>
+            </ul>
+            <div class="group-actions">
+              <a href="" class="view-details">View Details</a>
+              <button class="join-button">Join Group</button>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <nav aria-label="Pagination" class="pagination-container">
+        <ul class="pagination"></ul>
+      </nav>
+    </main>
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // load partials
+      fetch("/partials/header.html")
+        .then((r) => r.text())
+        .then(
+          (html) =>
+            (document.getElementById("header-placeholder").innerHTML = html)
+        );
+      fetch("/partials/footer.html")
+        .then((r) => r.text())
+        .then(
+          (html) =>
+            (document.getElementById("footer-placeholder").innerHTML = html)
+        );
+    </script>
+  </body>
+</html>
