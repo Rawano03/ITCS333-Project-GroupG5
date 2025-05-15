@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "http://127.0.0.1:3000/api/index.php"
+  const API_URL = "http://127.0.0.1:3000/api/marketplace"
   const productList = document.getElementById("product-list")
   const loading = document.getElementById("loading")
   const pagination = document.getElementById("pagination")

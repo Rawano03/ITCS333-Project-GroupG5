@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "https://122225da-dc0e-4f44-ae8a-200ebe109b9a-00-2mffjt9a35okh.pike.replit.dev/"
+  const API_URL = "http://127.0.0.1:3000/marketplace"
   const form = document.getElementById("create-form")
 
   if (!form) {
