@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post New Item</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="container">
+    <ul>
+      <li><strong>Marketplace</strong></li>
+    </ul>
+    <ul>
+      <li><a class="nav-button" href="marketplace.html">All Products</a></li>
+      <li><a class="nav-button" href="postnew.html">Post New Item</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <h2>Post a New Item</h2>
+    <form id="postForm">
+      <label>
+        Title
+        <input type="text" name="title" required />
+      </label>
+      <label>
+        Price
+        <input type="number" name="price" required />
+      </label>
+      <label>
+        Description
+        <textarea name="description"></textarea>
+      </label>
+      <label>
+        Category
+        <input type="text" name="category" />
+      </label>
+      <label>
+        Status
+        <select name="status">
+          <option value="New">New</option>
+          <option value="Used">Used</option>
+        </select>
+      </label>
+      <label>
+        Image URL
+        <input type="text" name="image" placeholder="img/default.jpg" />
+      </label>
+      <label>
+        Posted By
+        <input type="text" name="posted_by" placeholder="You" />
+      </label>
+      <label>
+        Date Posted
+        <input type="date" name="date_posted" />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+  <script src="Marketplace.js" ></script>
+</body>
+</html>
